@@ -21,8 +21,8 @@ smoollUtilities.launch = function() {
     // It's literally in the name of the function.
     smoollUtilities.optionsMenu = function() {
         let html = "<div class=\"listing\">" +
-                        CCSE.MenuHelper.ActionButton("", "Never Collapse Upgrade Menu") +
-                        "<label>Open upgrade menu fully and never collapse it even if cursor is not hovering over the menu</label>" +
+                        CCSE.MenuHelper.ToggleButton("", "Never Collapse Upgrade Menu", "test", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu") +
+                        "<label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over the menu</label>" +
                    "</div>";
 
         return html;
