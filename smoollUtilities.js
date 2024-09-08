@@ -32,7 +32,7 @@ smoollUtilities.launch = function() {
 
         // Add custom menu options
         Game.customOptionsMenu.push(function() {
-            CCSE.AppendCollapsibleOptionsMenu(smoollUtilities.name, smoollUtilities.optionsMenu);
+            CCSE.AppendCollapsibleOptionsMenu(smoollUtilities.name, smoollUtilities.optionsMenu());
         });
     };
 
