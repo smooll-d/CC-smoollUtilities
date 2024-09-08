@@ -17,6 +17,8 @@ smoollUtilities.GameVersion = "2.052";
 
 // Main function of the mod
 smoollUtilities.launch = function() {
+    // Custom optionsMenu function to show custom options for the mod in the options menu, I think that's simple to understand
+    // It's literally in the name of the function.
     smoollUtilities.optionsMenu = function() {
         let html = "<div class=\"listing\">" +
                         CCSE.MenuHelper.ActionButton("", "Never Collapse Upgrade Menu") +
