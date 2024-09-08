@@ -20,12 +20,14 @@ smoollUtilities.launch = function() {
     // Custom optionsMenu function to show custom options for the mod in the options menu, I think that's simple to understand
     // It's literally in the name of the function.
     smoollUtilities.optionsMenu = function() {
-        let html = "<div class=\"listing\">" +
-                        CCSE.MenuHelper.ToggleButton("test1", "test2", "test3", "Never Collapse Upgrade Menu ON", "Never Collapse Upgrade Menu OFF", console.log("Never Collapse Upgrade Menu")) +
-                        "<label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over menu</label>" +
-                   "</div>";
-
-        return html;
+        return "<div class=\"listing\">" +
+                   // I don't know what test1 and 2 mean. test3 is id of the button, ncum on and off is what is displayed
+                   // on the button when toggled and console.log("ncum") is the callback but it doesn't happen on click
+                   // it happens every so often, I think every 1-3 seconds.
+                   // TODO: make it work somehow
+                   CCSE.MenuHelper.ToggleButton("test1", "test2", "test3", "Never Collapse Upgrade Menu ON", "Never Collapse Upgrade Menu OFF", console.log("Never Collapse Upgrade Menu")) +
+                   "<label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over menu</label>" +
+               "</div>";
     };
 
     smoollUtilities.init = function() {
