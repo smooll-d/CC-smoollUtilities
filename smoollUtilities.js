@@ -18,10 +18,10 @@ smoollUtilities.GameVersion = "2.052";
 // Main function of the mod
 smoollUtilities.launch = function() {
     smoollUtilities.optionsMenu = function() {
-        let html = `<div class="listing">
-                        ${CCSE.MenuHelper.ActionButton("", "Never Collapse Upgrade Menu")}
-                        <label>Open upgrade menu fully and never collapse it even if cursor is not hovering over the menu</label>
-                    </div>`;
+        let html = "<div class=\"listing\">" +
+                        CCSE.MenuHelper.ActionButton("", "Never Collapse Upgrade Menu") +
+                        "<label>Open upgrade menu fully and never collapse it even if cursor is not hovering over the menu</label>" +
+                   "</div>";
     };
 
     smoollUtilities.init = function() {
