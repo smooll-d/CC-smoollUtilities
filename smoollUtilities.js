@@ -22,6 +22,8 @@ smoollUtilities.launch = function() {
                         CCSE.MenuHelper.ActionButton("", "Never Collapse Upgrade Menu") +
                         "<label>Open upgrade menu fully and never collapse it even if cursor is not hovering over the menu</label>" +
                    "</div>";
+
+        return html;
     };
 
     smoollUtilities.init = function() {
