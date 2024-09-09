@@ -13,10 +13,7 @@ if (smoollUtilities === undefined) {
                             "</div>" +
                       "<div/";
 
-            let div = document.createElement("div");
-            div.innerHTML = str;
-
-            return div;
+            l("menu").insertAdjecentHTML("beforeend", str);
         }
     };
 }
@@ -25,7 +22,7 @@ Game.registerMod("smoollUtilities", {
     init: function() {
         Game.Notify("smoollUtilities", "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
-        l("menu").appendChild(smoollUtilities.optionsMenu());
+        smoollUtilities.optionsMenu();
     },
 
     save: function() {
