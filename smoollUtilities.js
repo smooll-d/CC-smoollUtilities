@@ -25,7 +25,7 @@ if (smoollUtilities === undefined) {
             //               </div>
             //           </div>`;
 
-            if (menu) {
+            if (Game.ShowMenu()) {
                 menu.appendChild(menuDiv);
                 //menu.insertAdjacentHTML("afterend", smoollUtilities.optionsMenu());
             }
@@ -36,7 +36,7 @@ if (smoollUtilities === undefined) {
 Game.registerMod(su, {
     // Global variables
     init: function() {
-        Game.registerHook("logic", smoollUtilities.optionsMenu);
+        Game.registerHook("check", smoollUtilities.optionsMenu);
 
         Game.Notify(su, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
