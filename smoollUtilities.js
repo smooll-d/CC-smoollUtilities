@@ -1,7 +1,15 @@
+if (smoollUtilities === undefined) {
+    var smoollUtilities = {
+        optionsMenu: function() {
+            console.log("hello");
+        }
+    };
+}
+
 Game.registerMod("smoollUtilities", {
     // Custom functions
-    sUOptionsMenu: function() {
-        console.log("hello");
+    //sUOptionsMenu: function() {
+    //    console.log("hello");
         //let str = "<div class=\"block\" style=\"padding:0px;margin:8px 4px;\">" +
         //            "<div class=\"subsection\" style=\"padding:0px\">" +
         //                "<div class=\"title\">" +
@@ -17,12 +25,12 @@ Game.registerMod("smoollUtilities", {
         //if (Game.onMenu == "prefs") {
         //    return str;
         //}
-    },
+    //},
 
     // Functions needed for the mod to function
     init: function() {
         Game.Notify("smoollUtilities", "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
-        sUOptionsMenu();
+        smoollUtilities.optionsMenu();
     },
 
     save: function() {
