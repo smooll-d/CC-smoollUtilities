@@ -31,7 +31,7 @@ Game.registerMod("smoollUtilities", {
         //menu.insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
         if (menu) {
             //menu.appendChild(menuDiv);
-            menu.insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
+            menu.insertAdjacentHTML("afterend", smoollUtilities.optionsMenu());
         }
     },
 
