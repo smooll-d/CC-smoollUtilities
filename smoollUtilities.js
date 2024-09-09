@@ -1,17 +1,19 @@
 Game.registerMod("smoollUtilities", {
     // Custom functions
     optionsMenu:function() {
-        return "<div class=\"block\" style=\"padding:0px;margin:8px 4px;\">" +
+        let str = "<div class=\"block\" style=\"padding:0px;margin:8px 4px;\">" +
                     "<div class=\"subsection\" style=\"padding:0px\">" +
                         "<div class=\"title\">" +
                             "smoollUtilities" +
                             "<div class=\"listing\">" +
-                                Game.WritePrefButton("test1", "ncum", "testON", "testOFF") +
+                                Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu") +
                                 "<label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over menu</label>" +
                             "</div>" +
                         "</div>" +
                     "</div>" +
                "<div/";
+
+        return str;
     },
 
     // Functions needed for the mod to function
