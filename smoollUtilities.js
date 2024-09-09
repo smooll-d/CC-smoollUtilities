@@ -25,7 +25,7 @@ if (smoollUtilities === undefined) {
             //               </div>
             //           </div>`;
 
-            if (Game.ShowMenu()) {
+            if (menu) {
                 menu.appendChild(menuDiv);
                 //menu.insertAdjacentHTML("afterend", smoollUtilities.optionsMenu());
             }
@@ -38,7 +38,7 @@ Game.registerMod(su, {
     init: function() {
         Game.Notify(su, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
-        Game.registerHook("logic", smoollUtilities.optionsMenu());
+        Game.registerHook("draw", smoollUtilities.optionsMenu());
 
         //menu.insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
     },
