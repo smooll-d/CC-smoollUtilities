@@ -28,9 +28,10 @@ Game.registerMod("smoollUtilities", {
         let menuDiv = document.createElement("div");
         menuDiv.innerHTML = smoollUtilities.optionsMenu();
 
-        //l("menu").insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
+        //menu.insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
         if (menu) {
-            menu.appendChild(menuDiv);
+            //menu.appendChild(menuDiv);
+            menu.insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
         }
     },
 
