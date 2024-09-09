@@ -21,13 +21,17 @@ if (smoollUtilities === undefined) {
 Game.registerMod("smoollUtilities", {
     // Global variables
     init: function() {
+        var menu = l("menu");
+
         Game.Notify("smoollUtilities", "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
         let menuDiv = document.createElement("div");
         menuDiv.innerHTML = smoollUtilities.optionsMenu();
 
         //l("menu").insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
-        l("menu").appendChild(menuDiv);
+        if (menu) {
+            menu.appendChild(menuDiv);
+        }
     },
 
     save: function() {
