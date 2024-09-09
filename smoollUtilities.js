@@ -1,6 +1,6 @@
 Game.registerMod("smoollUtilities", {
     // Custom functions
-    optionsMenu:function() {
+    optionsMenu: function() {
         let str = "<div class=\"block\" style=\"padding:0px;margin:8px 4px;\">" +
                     "<div class=\"subsection\" style=\"padding:0px\">" +
                         "<div class=\"title\">" +
@@ -13,20 +13,22 @@ Game.registerMod("smoollUtilities", {
                     "</div>" +
                "<div/";
 
-        return str;
+        if (Game.onMenu == "prefs") {
+            return str;
+        }
     },
 
     // Functions needed for the mod to function
-    init:function() {
+    init: function() {
         Game.Notify("smoollUtilities", "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
         optionsMenu();
     },
 
-    save:function() {
+    save: function() {
         
     },
 
-    load:function(str) {
+    load: function(str) {
         
     }
 });
