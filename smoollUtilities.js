@@ -19,13 +19,15 @@ if (smoollUtilities === undefined) {
 }
 
 Game.registerMod("smoollUtilities", {
+    // Global variables
     init: function() {
         Game.Notify("smoollUtilities", "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
-        if (Game.onMenu == "prefs") {
-            console.log("Hello, prefs!");
-            l("menu").insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
-        }
+        let menuDiv = document.createElement("div");
+        menuDiv.innerHTML = smoollUtilities.optionsMenu();
+
+        //l("menu").insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
+        l("menu").appendChild(menuDiv);
     },
 
     save: function() {
