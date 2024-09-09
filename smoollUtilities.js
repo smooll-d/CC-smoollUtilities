@@ -22,9 +22,7 @@ Game.registerMod("smoollUtilities", {
     init: function() {
         Game.Notify("smoollUtilities", "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
-        if (Game.onMenu == "prefs") {
-            l("menu").insertAdjacentHTML("afterend", smoollUtilities.optionsMenu());
-        }
+        l("menu").insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
     },
 
     save: function() {
