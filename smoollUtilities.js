@@ -36,9 +36,9 @@ if (smoollUtilities === undefined) {
 Game.registerMod(su, {
     // Global variables
     init: function() {
-        Game.Notify(su, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
+        Game.registerHook("draw", smoollUtilities.optionsMenu);
 
-        Game.registerHook("draw", smoollUtilities.optionsMenu());
+        Game.Notify(su, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
         //menu.insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
     },
