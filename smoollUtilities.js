@@ -1,8 +1,8 @@
 if (smoollUtilities === undefined) {
     var smoollUtilities = {
-        collapseMenu: {},
-
         collapsibleMenu: function(title, body) {
+            var collapseMenu = {};
+
             var titleDiv = document.createElement('div');
 		    titleDiv.className = 'title';
 		    titleDiv.textContent = title + ' ';
