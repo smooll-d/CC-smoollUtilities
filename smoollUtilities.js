@@ -1,4 +1,5 @@
 var menu = l("menu");
+var general = l("general");
 
 if (smoollUtilities === undefined) {
     var smoollUtilities = {
@@ -73,19 +74,26 @@ if (smoollUtilities === undefined) {
 		    // div.innerHTML = str;
 		
 		    // if(general) general.parentNode.appendChild(div);
+
             let html = `<div class="listing">
                              <b>${this.name}: </b>
                              ${this.version}
                          </div>`;
 
-            l("statsGeneral").parentNode.innerHTML += html;
+            if (general) {
+                general.insertAdjacentHTML("afterend", html);
+            }
         }
     };
 }
 
 Game.registerMod(smoollUtilities.name, {
     init: function() {
-        Game.registerHook("check", smoollUtilities.statsMenu);
+        Game.registerHook("check", function () {
+            if (Game.onMenu == "stats") {
+                smoollUtilities.statsMenu();
+            }
+        });
 
         Game.Notify(smoollUtilities.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
