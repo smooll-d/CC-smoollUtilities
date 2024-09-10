@@ -90,7 +90,7 @@ if (smoollUtilities === undefined) {
 Game.registerMod(smoollUtilities.name, {
     init: function() {
         Game.registerHook("check", function () {
-            if (Game.onMenu == "stats") {
+            if (Game.onMenu === "stats") {
                 smoollUtilities.statsMenu();
             }
         });
