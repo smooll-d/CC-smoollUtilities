@@ -32,17 +32,18 @@ if (smoollUtilities === undefined) {
         optionsMenu: function() {
             if (Game.onMenu == "prefs") {
                 let div = document.createElement("div");
-                div.innerHTML = `<div class="block" style="padding:0px;margin:8px 4px;">
-                                     <div class="subsection" style="padding:0px">
-                                         <div class="title">
-                                             ${this.name}
-                                             <div class="listing">
-                                                 ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu")}
-                                                 <label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over menu</label>
-                                             </div>
+                div.className = "block";
+                div.style.padding = "0px";
+                div.style.margin = "8px 4px";
+                div.innerHTML = `<div class="subsection" style="padding:0px">
+                                     <div class="title">
+                                         ${this.name}
+                                         <div class="listing">
+                                             ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu")}
+                                             <label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over menu</label>
                                          </div>
                                      </div>
-                                 </div>`;
+                                </div>`;
 
                 if (menu) {
                     menu.childNodes[3].after(div);
@@ -53,10 +54,8 @@ if (smoollUtilities === undefined) {
         statsMenu: function() {
             if (Game.onMenu == "stats") {
                 let div = document.createElement("div");
-                div.innerHTML = `<div class="listing">
-                                     <b>${this.name}: </b>
-                                     ${this.version}
-                                 </div>`;
+                div.className = "listing";
+                div.innerHTML = `<b>${this.name}:</b> ${this.version}`;
 
                 if (menu) {
                     let menuNode = document.getElementsByClassName("subsection")[0];
