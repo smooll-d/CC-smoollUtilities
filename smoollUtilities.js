@@ -25,10 +25,8 @@ if (smoollUtilities === undefined) {
             //               </div>
             //           </div>`;
 
-            if (Game.ShowMenu()) {
-                menu.appendChild(menuDiv);
-                //menu.insertAdjacentHTML("afterend", smoollUtilities.optionsMenu());
-            }
+            menu.appendChild(menuDiv);
+            //menu.insertAdjacentHTML("afterend", smoollUtilities.optionsMenu());
         }
     };
 }
