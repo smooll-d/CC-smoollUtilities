@@ -89,11 +89,15 @@ if (smoollUtilities === undefined) {
 
 Game.registerMod(smoollUtilities.name, {
     init: function() {
-        Game.registerHook("check", function () {
-            if (Game.onMenu === "stats") {
+        let origgameupdate = Game.UpdateMenu;
+
+        Game.UpdateMenu = function() {
+            origgameupdate();
+
+            if (Game.onMenu == "stats") {
                 smoollUtilities.statsMenu();
             }
-        });
+        }
 
         Game.Notify(smoollUtilities.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
