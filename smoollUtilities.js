@@ -4,13 +4,15 @@ if (smoollUtilities === undefined) {
 
     var smoollUtilities = {
         optionsMenu: function() {
-            let str = `<div class="subsection" style="padding:0px">
-                            <div class="title">
-                                ${su}
-                                <div class="listing">
-                                    ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu")}
-                                    <label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over menu</label>
-                                </div>
+            let str = `<div class="block" style="padding:0px;margin:8px 4px;">
+                           <div class="subsection" style="padding:0px">
+                               <div class="title">
+                                   ${su}
+                                   <div class="listing">
+                                       ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu")}
+                                       <label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over menu</label>
+                                   </div>
+                               </div>
                            </div>
                        </div>`;
 
@@ -48,7 +50,8 @@ Game.registerMod(su, {
                              </div>`;
 
         if (Game.UpdateMenu() && Game.onMenu == "prefs") {
-            menu.appendChild(menuDiv);
+            //menu.appendChild(menuDiv);
+            menu.insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
         }
 
         // if (Game.UpdateMenu()) {
