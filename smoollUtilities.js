@@ -1,5 +1,5 @@
-var menu = l("menu");
-var general = l("statsGeneral");
+var menu = document.getElementById("menu");
+var general = document.getElementById("statsGeneral");
 
 if (smoollUtilities === undefined) {
     var smoollUtilities = {
@@ -11,14 +11,10 @@ if (smoollUtilities === undefined) {
             const CCUpdateMenu = Game.UpdateMenu;
 
             Game.UpdateMenu = function() {
-                if (Game.onMenu == "stats") {
-                    CCUpdateMenu();
+                CCUpdateMenu();
 
-                    Game.mods["smoollUtilities"].statsMenu();
-                }
+                Game.mods["smoollUtilities"].statsMenu();
             };
-
-            setTimeout(function() { Game.ShowMenu("stats") }, 500);
 
             Game.Notify(smoollUtilities.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
         },
@@ -45,11 +41,6 @@ if (smoollUtilities === undefined) {
                                      </div>
                                  </div>`;
 
-            // let div = document.createElement("div");
-            // div.innerHTML = html;
-
-            // menu.appendChild(div);
-
             if (menu) {
                 menu.insertAdjacentHTML("beforeend", html);
             }
@@ -57,50 +48,21 @@ if (smoollUtilities === undefined) {
             Game.UpdateMenu();
 
             console.log("Hello, this is an options menu test");
-
-            // let menuDiv = document.createElement("div");
-            // menuDiv.innerHTML = `<div class="block" style="padding:0px;margin:8px 4px;">
-            //                         ${str}
-            //                      </div>`;
-
-            // if (menu) {
-            //     menu.appendChild(menuDiv);
-            // }
-
-            //let str = `<div class="block" style="padding:0px;margin:8px 4px;">
-            //               <div class="subsection" style="padding:0px">
-            //                   ${this.collapsibleMenu("smoollUtilities", "Hello, test!")}
-            //               </div>
-            //           </div>`;
-
-            //menu.insertAdjacentHTML("afterend", smoollUtilities.optionsMenu());
         },
 
         statsMenu: function() {
-            // var general = l('statsGeneral');
-		    // var str = `<b>${this.name}:</b> ${this.version}`;
-		    // var div = document.createElement('div');
-		    // div.className = 'listing';
-		    // div.innerHTML = str;
-		
-		    // if(general) general.parentNode.appendChild(div);
+            if (Game.onMenu == "stats") {
+                let div = document.createElement("div");
+                div.innerHTML = `<div class="listing">
+                                     <b>${this.name}: </b>
+                                     ${this.version}
+                                 </div>`;
 
-            // let html = `<div class="listing">
-            //                  <b>${this.name}: </b>
-            //                  ${this.version}
-            //              </div>`;
-
-            // if (general) {
-            //     general.insertAdjacentHTML("beforeend", html);
-            // }
-
-            let html = `<b>${this.name}:</b> ${this.version}`;
-            
-            let div = document.createElement("div");
-            div.innerHTML = `<div class="listing">${html}</div>`;
-
-            if (general) {
-                general.appendChild(div);
+                if (menu && general) {
+                    //let menuNode = document.getElementsByClassName("subsection")[0]
+                    let generalNode = general.parentElement;
+                    generalNode.lastElementChild.after(div);
+                }
             }
         }
     };
