@@ -1,5 +1,5 @@
 var menu = l("menu");
-var general = l("general");
+var general = l("statsGeneral");
 
 if (smoollUtilities === undefined) {
     var smoollUtilities = {
@@ -19,26 +19,6 @@ if (smoollUtilities === undefined) {
             setTimeout(function() { Game.ShowMenu("stats") }, 500);
 
             Game.Notify(smoollUtilities.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
-
-            // while(Game.UpdateMenu()) {
-            //     if (Game.onMenu == "prefs") {
-            //         console.log("smoollUtilities.optionsMenu()");
-            //     }
-            // }
-
-            // if (Game.UpdateMenu()) {
-            //     smoollUtilities.optionsMenu();
-            // }
-
-            // if (Game.onMenu == "prefs") {
-            //     Game.UpdateMenu();
-            //     //menu.appendChild(menuDiv);
-            //     l("menu").insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
-            // }
-
-            // if (Game.UpdateMenu()) {
-            //     menu.insertAdjacentHTML("afterbegin", smoollUtilities.optionsMenu());
-            // }
         },
 
         save: function() {
