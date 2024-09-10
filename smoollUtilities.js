@@ -7,7 +7,7 @@ if (smoollUtilities === undefined) {
             let str = `<div class="block" style="padding:0px;margin:8px 4px;">
                            <div class="subsection" style="padding:0px">
                                <div class="title">
-                                   ${su}
+                                   smoollUtilities
                                    <div class="listing">
                                        ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu")}
                                        <label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over menu</label>
@@ -15,6 +15,11 @@ if (smoollUtilities === undefined) {
                                </div>
                            </div>
                        </div>`;
+
+            let menuDiv = document.createElement("div");
+            menuDiv.innerHTML = str;
+    
+            menu.appendChild(menuDiv);
 
             // let menuDiv = document.createElement("div");
             // menuDiv.innerHTML = `<div class="block" style="padding:0px;margin:8px 4px;">
@@ -32,8 +37,6 @@ if (smoollUtilities === undefined) {
             //           </div>`;
 
             //menu.insertAdjacentHTML("afterend", smoollUtilities.optionsMenu());
-
-            return str;
         }
     };
 }
@@ -44,12 +47,7 @@ Game.registerMod(su, {
 
         Game.Notify(su, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
-        let menuDiv = document.createElement("div");
-        menuDiv.innerHTML = `<div class="block" style="padding:0px;margin:8px 4px;">
-                                ${smoollUtilities.optionsMenu()}
-                             </div>`;
-
-        menu.appendChild(menuDiv);
+        smoollUtilities.optionsMenu();
 
         // if (Game.UpdateMenu()) {
         //     smoollUtilities.optionsMenu();
