@@ -1,9 +1,10 @@
 var menu = l("menu");
-var info = smoollUtilities.readTextFileAsJSON("info.txt");
 
 if (smoollUtilities === undefined) {
     var smoollUtilities = {
         // Mod variables
+        info : this.readTextFileAsJSON("info.txt"),
+
         name: "smoollUtilities",
 
         version: info.ModVersion,
