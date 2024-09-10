@@ -16,10 +16,12 @@ if (smoollUtilities === undefined) {
                            </div>
                        </div>`;
 
-            let div = document.createElement("div");
-            div.innerHTML = html;
+            // let div = document.createElement("div");
+            // div.innerHTML = html;
 
-            menu.appendChild(div);
+            // menu.appendChild(div);
+
+            menu.insertAdjacentHTML("beforeend", html);
 
             Game.UpdateMenu();
 
