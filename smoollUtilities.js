@@ -5,7 +5,7 @@ if (smoollUtilities === undefined) {
     var smoollUtilities = {
         optionsMenu: function() {
             let str = `<div class="subsection" style="padding:0px">
-                           "<div class="title">
+                            <div class="title">
                                 ${su}
                                 <div class="listing">
                                     ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu")}
@@ -47,7 +47,7 @@ Game.registerMod(su, {
                                 ${smoollUtilities.optionsMenu()}
                              </div>`;
 
-        if (menu) {
+        if (Game.UpdateMenu() && Game.onMenu == "prefs") {
             menu.appendChild(menuDiv);
         }
 
