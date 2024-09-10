@@ -3,11 +3,9 @@ var menu = l("menu");
 if (smoollUtilities === undefined) {
     var smoollUtilities = {
         // Mod variables
-        info : this.readTextFileAsJSON("info.txt"),
-
         name: "smoollUtilities",
 
-        version: info.ModVersion,
+        version: "0.1",
 
         // Helper functions
         checkMenu: function(sectionText) {
@@ -22,27 +20,12 @@ if (smoollUtilities === undefined) {
             return false;
         },
 
-        readTextFileAsJSON: function(filepath) {
-            const fs = require("fs");
-
-            fs.readFile(filepath, "utf8", (err, data) => {
-                if (err) throw err;
-
-                try {
-                    const jsonData = JSON.parse(data);
-                    return jsonData;
-                } catch (error) {
-                    console.error(`${this.name} | Error parsing JSON: `, error);
-                }
-            });
-        },
-
         // Mod functions
         optionsMenu: function() {
             let html = `<div class="block" style="padding:0px;margin:8px 4px;">
                                      <div class="subsection" style="padding:0px">
                                          <div class="title">
-                                             ${smoollUtilities.name}
+                                             ${this.name}
                                              <div class="listing">
                                                  ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu")}
                                                  <label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over menu</label>
@@ -83,26 +66,24 @@ if (smoollUtilities === undefined) {
         },
 
         statsMenu: function() {
-            if (this.checkMenu("Statistics")) {
-                let html = `<div class="subsection">
-                                         <div class="title" style="position:relative;">
-                                             <div class="listing">
-                                                 <b>smoollUtilities: </b>
-                                             </div>
-                                         </div>
-                                     </div>`;
-            }
+            var general = l('statsGeneral');
+		    var str = `<b>${this.name}:</b> ${this.version}`;
+		    var div = document.createElement('div');
+		    div.className = 'listing';
+		    div.innerHTML = str;
+		
+		    if(general) general.parentNode.appendChild(div);
         }
     };
 }
 
 Game.registerMod(smoollUtilities.name, {
     init: function() {
-        //Game.registerHook("check", this.optionsMenu);
+        Game.registerHook("check", this.statsMenu);
 
         Game.Notify(smoollUtilities.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
-        console.log(`${smoollUtilities.name} version ${smoollUtilities.ModVersion}`);
+        console.log(`${smoollUtilities.name} version ${smoollUtilities.version}`);
 
         // while(Game.UpdateMenu()) {
         //     if (Game.onMenu == "prefs") {
