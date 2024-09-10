@@ -49,7 +49,8 @@ Game.registerMod(su, {
                                 ${smoollUtilities.optionsMenu()}
                              </div>`;
 
-        if (Game.UpdateMenu() && Game.onMenu == "prefs") {
+        if (Game.onMenu == "prefs") {
+            Game.UpdateMenu();
             //menu.appendChild(menuDiv);
             menu.insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
         }
