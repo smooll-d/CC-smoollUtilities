@@ -19,7 +19,11 @@ if (smoollUtilities === undefined) {
             let div = document.createElement("div");
             div.innerHTML = html;
 
-            return div;
+            menu.appendChild(div);
+
+            Game.UpdateMenu();
+
+            console.log("Hello, this is an options menu test");
 
             // let menuDiv = document.createElement("div");
             // menuDiv.innerHTML = `<div class="block" style="padding:0px;margin:8px 4px;">
@@ -43,7 +47,7 @@ if (smoollUtilities === undefined) {
 
 Game.registerMod(su, {
     init: function() {
-        Game.registerHook("check", console.log("smoollUtilities.optionsMenu()"));
+        Game.registerHook("check", smoollUtilities.optionsMenu);
 
         Game.Notify(su, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
