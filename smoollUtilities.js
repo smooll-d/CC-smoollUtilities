@@ -52,13 +52,13 @@ if (smoollUtilities === undefined) {
 
         statsMenu: function() {
             if (Game.onMenu == "stats") {
-                let div = document.createElement("div");
+                var div = document.createElement("div");
                 div.innerHTML = `<div class="listing">
                                      <b>${this.name}: </b>
                                      ${this.version}
                                  </div>`;
 
-                if (menu && general) {
+                if (general) {
                     //let menuNode = document.getElementsByClassName("subsection")[0]
                     let generalNode = general.parentElement;
                     generalNode.lastElementChild.after(div);
