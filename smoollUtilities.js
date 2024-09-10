@@ -81,7 +81,7 @@ if (smoollUtilities === undefined) {
                          </div>`;
 
             if (general) {
-                general.insertAdjacentHTML("afterend", html);
+                general.insertAdjacentHTML("beforeend", html);
             }
         }
     };
