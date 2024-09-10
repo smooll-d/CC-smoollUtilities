@@ -20,16 +20,18 @@ if (smoollUtilities === undefined) {
         },
 
         save: function() {
-
+            // look at all this code!
         },
 
         load: function(str) {
-
+            // and here's even more of it!
         },
 
         // Mod functions
         optionsMenu: function() {
-            let html = `<div class="block" style="padding:0px;margin:8px 4px;">
+            if (Game.onMenu == "prefs") {
+                let div = document.createElement("div");
+                div.innerHTML = `<div class="block" style="padding:0px;margin:8px 4px;">
                                      <div class="subsection" style="padding:0px">
                                          <div class="title">
                                              ${this.name}
@@ -41,18 +43,15 @@ if (smoollUtilities === undefined) {
                                      </div>
                                  </div>`;
 
-            if (menu) {
-                menu.insertAdjacentHTML("beforeend", html);
+                if (menu) {
+                    menu.childNodes[3].after(div);
+                }
             }
-
-            Game.UpdateMenu();
-
-            console.log("Hello, this is an options menu test");
         },
 
         statsMenu: function() {
             if (Game.onMenu == "stats") {
-                var div = document.createElement("div");
+                let div = document.createElement("div");
                 div.innerHTML = `<div class="listing">
                                      <b>${this.name}: </b>
                                      ${this.version}
@@ -60,7 +59,7 @@ if (smoollUtilities === undefined) {
 
                 if (menu) {
                     let menuNode = document.getElementsByClassName("subsection")[0];
-                    menuNode.childNodes[2].after(div);
+                    menuNode.childNodes[3].after(div);
                     //let generalNode = general.parentElement;
                     //generalNode.lastElementChild.after(div);
                 }
