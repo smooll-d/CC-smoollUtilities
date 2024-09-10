@@ -1,5 +1,7 @@
 //TODO: prevent upgrade menu from collapsing when "Never Collapse Upgrade Menu" is set
 //TODO: save and load state of "Never Collapse Upgrade Menu"
+//TODO: add collapsible button
+//TODO: add version history to "Info" menu (which I need the collapsible button for)
 
 var menu = document.getElementById("menu");
 
@@ -9,7 +11,7 @@ if (smoollUtilities === undefined) {
         name: "smoollUtilities",
         version: "0.1",
 
-        // Functions required for this mod to work
+        // Functions required for this (and every other) mod to work
         init: function() {
             const CCUpdateMenu = Game.UpdateMenu;
 
@@ -20,7 +22,7 @@ if (smoollUtilities === undefined) {
                 smoollUtilities.statsMenu();
             };
 
-            Game.Notify(smoollUtilities.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5], 3);
+            Game.Notify(this.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5], 3);
         },
 
         save: function() {
