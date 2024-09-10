@@ -19,7 +19,7 @@ if (smoollUtilities === undefined) {
             let menuDiv = document.createElement("div");
             menuDiv.innerHTML = str;
 
-            if (Game.onMenu == "prefs") {
+            if (Game.ShowMenu()) {
                 console.log("optionsMenu()");
                 menu.appendChild(menuDiv);
             }
