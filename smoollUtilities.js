@@ -105,7 +105,7 @@ Game.registerMod(smoollUtilities.name, {
         Game.UpdateMenu = function() {
             CCUpdateMenu();
 
-            Game.mods[smoollUtilities.name].statsMenu();
+            Game.mods["smoollUtilities"].statsMenu();
         };
 
         setTimeout(function() { Game.ShowMenu("stats") }, 500);
