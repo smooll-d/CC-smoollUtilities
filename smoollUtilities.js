@@ -47,8 +47,10 @@ Game.registerMod(su, {
 
         Game.Notify(su, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
-        if (Game.onMenu == "prefs") {
-            console.log("smoollUtilities.optionsMenu()");
+        while(Game.UpdateMenu()) {
+            if (Game.onMenu == "prefs") {
+                console.log("smoollUtilities.optionsMenu()");
+            }
         }
 
         // if (Game.UpdateMenu()) {
