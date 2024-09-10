@@ -7,7 +7,7 @@ if (smoollUtilities === undefined) {
             let str = `<div class="block" style="padding:0px;margin:8px 4px;">
                            <div class="subsection" style="padding:0px">
                                <div class="title">
-                                   smoollUtilities
+                                   ${su}
                                    <div class="listing">
                                        ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu")}
                                        <label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over menu</label>
@@ -18,8 +18,10 @@ if (smoollUtilities === undefined) {
 
             let menuDiv = document.createElement("div");
             menuDiv.innerHTML = str;
-    
-            menu.appendChild(menuDiv);
+
+            if (Game.onMenu == "prefs") {
+                menu.appendChild(menuDiv);
+            }
 
             // let menuDiv = document.createElement("div");
             // menuDiv.innerHTML = `<div class="block" style="padding:0px;margin:8px 4px;">
