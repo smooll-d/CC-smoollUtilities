@@ -19,10 +19,7 @@ if (smoollUtilities === undefined) {
             let menuDiv = document.createElement("div");
             menuDiv.innerHTML = str;
 
-            if (Game.ShowMenu()) {
-                console.log("optionsMenu()");
-                menu.appendChild(menuDiv);
-            }
+            Game.UpdateMenu().str += str;
 
             // let menuDiv = document.createElement("div");
             // menuDiv.innerHTML = `<div class="block" style="padding:0px;margin:8px 4px;">
