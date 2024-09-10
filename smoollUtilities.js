@@ -1,6 +1,6 @@
 if (smoollUtilities === undefined) {
     var su = "smoollUtilities";
-    var menu = l("menu");
+    //var menu = l("menu");
 
     var smoollUtilities = {
         optionsMenu: function() {
@@ -39,7 +39,7 @@ Game.registerMod(su, {
         //if (Game.onMenu == "prefs") {
         //    Game.UpdateMenu();
             //menu.appendChild(menuDiv);
-        menu.insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
+        l("menu").insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
         //}
 
         // if (Game.UpdateMenu()) {
