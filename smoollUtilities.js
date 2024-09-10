@@ -105,10 +105,10 @@ Game.registerMod(smoollUtilities.name, {
         Game.UpdateMenu = function() {
             CCUpdateMenu();
 
-            smoollUtilities.statsMenu();
+            Game.mods[smoollUtilities.name].statsMenu();
         };
 
-        setTimeout(function() { Game.ShowMenu("prefs") }, 500);
+        setTimeout(function() { Game.ShowMenu("stats") }, 500);
 
         Game.Notify(smoollUtilities.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
