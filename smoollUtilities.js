@@ -25,11 +25,9 @@ if (smoollUtilities === undefined) {
             //               </div>
             //           </div>`;
 
-            if (Game.UpdateMenu() && Game.ShowMenu()) {
-                //menu.appendChild(menuDiv);
-                menu.insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
-            }
             //menu.insertAdjacentHTML("afterend", smoollUtilities.optionsMenu());
+
+            return menuDiv;
         }
     };
 }
@@ -37,6 +35,11 @@ if (smoollUtilities === undefined) {
 Game.registerMod(su, {
     init: function() {
         Game.Notify(su, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
+
+        if (Game.UpdateMenu() && Game.ShowMenu()) {
+            //menu.appendChild(menuDiv);
+            menu.insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
+        }
 
         // if (Game.UpdateMenu()) {
         //     menu.insertAdjacentHTML("afterbegin", smoollUtilities.optionsMenu());
