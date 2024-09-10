@@ -14,10 +14,10 @@ if (smoollUtilities === undefined) {
                            </div>
                        </div>`;
 
-            let menuDiv = document.createElement("div");
-            menuDiv.innerHTML = `<div class="block" style="padding:0px;margin:8px 4px;">
-                                    ${str}
-                                 </div>`;
+            // let menuDiv = document.createElement("div");
+            // menuDiv.innerHTML = `<div class="block" style="padding:0px;margin:8px 4px;">
+            //                         ${str}
+            //                      </div>`;
 
             //let str = `<div class="block" style="padding:0px;margin:8px 4px;">
             //               <div class="subsection" style="padding:0px">
@@ -27,7 +27,7 @@ if (smoollUtilities === undefined) {
 
             //menu.insertAdjacentHTML("afterend", smoollUtilities.optionsMenu());
 
-            return menuDiv;
+            return str;
         }
     };
 }
@@ -36,10 +36,10 @@ Game.registerMod(su, {
     init: function() {
         Game.Notify(su, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
-        //if (Game.UpdateMenu() && Game.ShowMenu()) {
+        if (Game.UpdateMenu() && Game.ShowMenu()) {
             //menu.appendChild(menuDiv);
             menu.insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
-        //}
+        }
 
         // if (Game.UpdateMenu()) {
         //     menu.insertAdjacentHTML("afterbegin", smoollUtilities.optionsMenu());
