@@ -1,6 +1,6 @@
 if (smoollUtilities === undefined) {
     var su = "smoollUtilities";
-    //var menu = l("menu");
+    var menu = l("menu");
 
     var smoollUtilities = {
         optionsMenu: function() {
@@ -14,10 +14,14 @@ if (smoollUtilities === undefined) {
                            </div>
                        </div>`;
 
-            // let menuDiv = document.createElement("div");
-            // menuDiv.innerHTML = `<div class="block" style="padding:0px;margin:8px 4px;">
-            //                         ${str}
-            //                      </div>`;
+            let menuDiv = document.createElement("div");
+            menuDiv.innerHTML = `<div class="block" style="padding:0px;margin:8px 4px;">
+                                    ${str}
+                                 </div>`;
+
+            if (menu) {
+                menu.appendChild(menuDiv);
+            }
 
             //let str = `<div class="block" style="padding:0px;margin:8px 4px;">
             //               <div class="subsection" style="padding:0px">
@@ -27,20 +31,22 @@ if (smoollUtilities === undefined) {
 
             //menu.insertAdjacentHTML("afterend", smoollUtilities.optionsMenu());
 
-            return str;
+            //return str;
         }
     };
 }
 
 Game.registerMod(su, {
     init: function() {
+        Game.registerHook("logic", smoollUtilities.optionsMenu());
+
         Game.Notify(su, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
-        if (Game.onMenu == "prefs") {
-            Game.UpdateMenu();
-            //menu.appendChild(menuDiv);
-            l("menu").insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
-        }
+        // if (Game.onMenu == "prefs") {
+        //     Game.UpdateMenu();
+        //     //menu.appendChild(menuDiv);
+        //     l("menu").insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
+        // }
 
         // if (Game.UpdateMenu()) {
         //     menu.insertAdjacentHTML("afterbegin", smoollUtilities.optionsMenu());
