@@ -1,3 +1,6 @@
+//TODO: prevent upgrade menu from collapsing when "Never Collapse Upgrade Menu" is set
+//TODO: save and load state of "Never Collapse Upgrade Menu"
+
 var menu = document.getElementById("menu");
 
 if (smoollUtilities === undefined) {
@@ -6,6 +9,7 @@ if (smoollUtilities === undefined) {
         name: "smoollUtilities",
         version: "0.1",
 
+        // Functions required for this mod to work
         init: function() {
             const CCUpdateMenu = Game.UpdateMenu;
 
