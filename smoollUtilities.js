@@ -5,20 +5,48 @@ if (smoollUtilities === undefined) {
     var smoollUtilities = {
         // Mod variables
         name: "smoollUtilities",
-
         version: "0.1",
 
-        // Helper functions
-        checkMenu: function(sectionText) {
-            let section = menu.classList.contains("section");
+        init: function() {
+            const CCUpdateMenu = Game.UpdateMenu;
 
-            for (var i = 0; i < section.length; i++) {
-                if (section[i].innerHTML.indexOf(sectionText) > - 1) {
-                    return true;
-                }
-            }
+            Game.UpdateMenu = function() {
+                CCUpdateMenu();
 
-            return false;
+                Game.mods["smoollUtilities"].statsMenu();
+            };
+
+            setTimeout(function() { Game.ShowMenu("stats") }, 500);
+
+            Game.Notify(smoollUtilities.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
+
+            // while(Game.UpdateMenu()) {
+            //     if (Game.onMenu == "prefs") {
+            //         console.log("smoollUtilities.optionsMenu()");
+            //     }
+            // }
+
+            // if (Game.UpdateMenu()) {
+            //     smoollUtilities.optionsMenu();
+            // }
+
+            // if (Game.onMenu == "prefs") {
+            //     Game.UpdateMenu();
+            //     //menu.appendChild(menuDiv);
+            //     l("menu").insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
+            // }
+
+            // if (Game.UpdateMenu()) {
+            //     menu.insertAdjacentHTML("afterbegin", smoollUtilities.optionsMenu());
+            // }
+        },
+
+        save: function() {
+
+        },
+
+        load: function(str) {
+
         },
 
         // Mod functions
@@ -98,46 +126,4 @@ if (smoollUtilities === undefined) {
     };
 }
 
-Game.registerMod(smoollUtilities.name, {
-    init: function() {
-        const CCUpdateMenu = Game.UpdateMenu;
-
-        Game.UpdateMenu = function() {
-            CCUpdateMenu();
-
-            Game.mods["smoollUtilities"].statsMenu();
-        };
-
-        setTimeout(function() { Game.ShowMenu("stats") }, 500);
-
-        Game.Notify(smoollUtilities.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
-
-        // while(Game.UpdateMenu()) {
-        //     if (Game.onMenu == "prefs") {
-        //         console.log("smoollUtilities.optionsMenu()");
-        //     }
-        // }
-
-        // if (Game.UpdateMenu()) {
-        //     smoollUtilities.optionsMenu();
-        // }
-
-        // if (Game.onMenu == "prefs") {
-        //     Game.UpdateMenu();
-        //     //menu.appendChild(menuDiv);
-        //     l("menu").insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
-        // }
-
-        // if (Game.UpdateMenu()) {
-        //     menu.insertAdjacentHTML("afterbegin", smoollUtilities.optionsMenu());
-        // }
-    },
-
-    save: function() {
-        
-    },
-
-    load: function(str) {
-        
-    }
-});
+Game.registerMod(smoollUtilities.name, smoollUtilities);
