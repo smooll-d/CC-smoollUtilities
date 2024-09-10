@@ -13,6 +13,7 @@ if (smoollUtilities === undefined) {
             Game.UpdateMenu = function() {
                 CCUpdateMenu();
 
+                Game.mods["smoollUtilities"].optionsMenu();
                 Game.mods["smoollUtilities"].statsMenu();
             };
 
