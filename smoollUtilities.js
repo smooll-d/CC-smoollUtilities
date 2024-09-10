@@ -21,7 +21,9 @@ if (smoollUtilities === undefined) {
 
             // menu.appendChild(div);
 
-            menu.insertAdjacentHTML("beforeend", html);
+            if (menu) {
+                menu.insertAdjacentHTML("beforeend", html);
+            }
 
             Game.UpdateMenu();
 
