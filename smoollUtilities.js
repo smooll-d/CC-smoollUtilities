@@ -75,13 +75,24 @@ if (smoollUtilities === undefined) {
 		
 		    // if(general) general.parentNode.appendChild(div);
 
-            let html = `<div class="listing">
-                             <b>${this.name}: </b>
-                             ${this.version}
-                         </div>`;
+            // let html = `<div class="listing">
+            //                  <b>${this.name}: </b>
+            //                  ${this.version}
+            //              </div>`;
 
-            if (general) {
-                general.insertAdjacentHTML("beforeend", html);
+            // if (general) {
+            //     general.insertAdjacentHTML("beforeend", html);
+            // }
+
+            if (Game.onMenu == "stats") {
+                let html = `<b>${this.name}:</b> ${this.version}`;
+                
+                let div = document.createElement("div");
+                div.innerHTML = `<div class="listing">${html}</div>`;
+
+                if (general) {
+                    general.parentNode.appendChild(div);
+                }
             }
         }
     };
@@ -89,19 +100,17 @@ if (smoollUtilities === undefined) {
 
 Game.registerMod(smoollUtilities.name, {
     init: function() {
-        let origgameupdate = Game.UpdateMenu;
+        const CCUpdateMenu = Game.UpdateMenu;
 
         Game.UpdateMenu = function() {
-            origgameupdate();
+            CCUpdateMenu();
 
-            if (Game.onMenu == "stats") {
-                smoollUtilities.statsMenu();
-            }
-        }
+            smoollUtilities.statsMenu();
+        };
+
+        setTimeout(function() { Game.ShowMenu("prefs") }, 500);
 
         Game.Notify(smoollUtilities.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
-
-        console.log(`${smoollUtilities.name} version ${smoollUtilities.version}`);
 
         // while(Game.UpdateMenu()) {
         //     if (Game.onMenu == "prefs") {
