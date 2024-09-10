@@ -11,9 +11,11 @@ if (smoollUtilities === undefined) {
             const CCUpdateMenu = Game.UpdateMenu;
 
             Game.UpdateMenu = function() {
-                CCUpdateMenu();
+                if (Game.onMenu == "stats") {
+                    CCUpdateMenu();
 
-                Game.mods["smoollUtilities"].statsMenu();
+                    Game.mods["smoollUtilities"].statsMenu();
+                }
             };
 
             setTimeout(function() { Game.ShowMenu("stats") }, 500);
@@ -92,15 +94,13 @@ if (smoollUtilities === undefined) {
             //     general.insertAdjacentHTML("beforeend", html);
             // }
 
-            if (Game.onMenu == "stats") {
-                let html = `<b>${this.name}:</b> ${this.version}`;
-                
-                let div = document.createElement("div");
-                div.innerHTML = `<div class="listing">${html}</div>`;
+            let html = `<b>${this.name}:</b> ${this.version}`;
+            
+            let div = document.createElement("div");
+            div.innerHTML = `<div class="listing">${html}</div>`;
 
-                if (general) {
-                    general.parentNode.lastChild.after(div);
-                }
+            if (general) {
+                general.appendChild(div);
             }
         }
     };
