@@ -58,10 +58,11 @@ if (smoollUtilities === undefined) {
                                      ${this.version}
                                  </div>`;
 
-                if (general) {
-                    //let menuNode = document.getElementsByClassName("subsection")[0]
-                    let generalNode = general.parentElement;
-                    generalNode.lastElementChild.after(div);
+                if (menu) {
+                    let menuNode = document.getElementsByClassName("subsection")[0];
+                    menuNode.childNodes[2].after(div);
+                    //let generalNode = general.parentElement;
+                    //generalNode.lastElementChild.after(div);
                 }
             }
         }
