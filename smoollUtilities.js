@@ -36,7 +36,8 @@ Game.registerMod(su, {
     init: function() {
         Game.Notify(su, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
-        if (Game.ShowMenu()) {
+        if (Game.onMenu == "prefs") {
+            Game.UpdateMenu();
             //menu.appendChild(menuDiv);
             menu.insertAdjacentHTML("beforeend", smoollUtilities.optionsMenu());
         }
