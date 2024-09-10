@@ -38,9 +38,13 @@ if (smoollUtilities === undefined) {
 
 Game.registerMod(su, {
     init: function() {
-        Game.registerHook("logic", smoollUtilities.optionsMenu);
+        //Game.registerHook("logic", smoollUtilities.optionsMenu);
 
         Game.Notify(su, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
+
+        if (Game.UpdateMenu()) {
+            smoollUtilities.optionsMenu();
+        }
 
         // if (Game.onMenu == "prefs") {
         //     Game.UpdateMenu();
