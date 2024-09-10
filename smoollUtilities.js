@@ -4,7 +4,7 @@ if (smoollUtilities === undefined) {
 
     var smoollUtilities = {
         optionsMenu: function() {
-            let str = `<div class="block" style="padding:0px;margin:8px 4px;">
+            let html = `<div class="block" style="padding:0px;margin:8px 4px;">
                            <div class="subsection" style="padding:0px">
                                <div class="title">
                                    ${su}
@@ -16,10 +16,10 @@ if (smoollUtilities === undefined) {
                            </div>
                        </div>`;
 
-            let menuDiv = document.createElement("div");
-            menuDiv.innerHTML = str;
+            let div = document.createElement("div");
+            div.innerHTML = html;
 
-            Game.UpdateMenu().str += str;
+            return div;
 
             // let menuDiv = document.createElement("div");
             // menuDiv.innerHTML = `<div class="block" style="padding:0px;margin:8px 4px;">
@@ -47,7 +47,9 @@ Game.registerMod(su, {
 
         Game.Notify(su, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5]);
 
-        smoollUtilities.optionsMenu();
+        if (Game.onMenu == "prefs") {
+            console.log("smoollUtilities.optionsMenu()");
+        }
 
         // if (Game.UpdateMenu()) {
         //     smoollUtilities.optionsMenu();
