@@ -66,13 +66,19 @@ if (smoollUtilities === undefined) {
         },
 
         statsMenu: function() {
-            var general = l('statsGeneral');
-		    var str = `<b>${this.name}:</b> ${this.version}`;
-		    var div = document.createElement('div');
-		    div.className = 'listing';
-		    div.innerHTML = str;
+            // var general = l('statsGeneral');
+		    // var str = `<b>${this.name}:</b> ${this.version}`;
+		    // var div = document.createElement('div');
+		    // div.className = 'listing';
+		    // div.innerHTML = str;
 		
-		    if(general) general.parentNode.appendChild(div);
+		    // if(general) general.parentNode.appendChild(div);
+            let html = `<div class="listing">
+                             <b>${this.name}: </b>
+                             ${this.version}
+                         </div>`;
+
+            l("statsGeneral").parentNode.innerHTML += html;
         }
     };
 }
