@@ -27,7 +27,7 @@ if (smoollUtilities === undefined) {
 
             if (Game.UpdateMenu()) {
                 //menu.appendChild(menuDiv);
-                menu.insertAdjacentHTML("afterend", smoollUtilities.optionsMenu());
+                menu.insertAdjacentHTML("afterbegin", smoollUtilities.optionsMenu());
             }
             //menu.insertAdjacentHTML("afterend", smoollUtilities.optionsMenu());
         }
