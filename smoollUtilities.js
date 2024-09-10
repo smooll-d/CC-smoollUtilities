@@ -1,7 +1,5 @@
-if (smoollUtilities === undefined) {
-    var su = "smoollUtilities";
-    var menu = l("menu");
-}
+var su = "smoollUtilities";
+var menu = l("menu");
 
 Game.registerMod(su, {
     optionsMenu: function() {
