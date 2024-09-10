@@ -99,7 +99,7 @@ if (smoollUtilities === undefined) {
                 div.innerHTML = `<div class="listing">${html}</div>`;
 
                 if (general) {
-                    general.parentNode.appendChild(div);
+                    general.parentNode.lastChild.after(div);
                 }
             }
         }
