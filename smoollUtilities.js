@@ -39,14 +39,27 @@ if (smoollUtilities === undefined) {
 
         // Mod functions
         neverCollapseUpgradeMenu: function() {
-            if (this.neverCollapseUpgradeMenu === 1) {
-                if (storeSection) {
-                    Object.values(storeSection).forEach((section) => {
-                        if (section.id === "upgrades") {
-                            section.style.height = '';
+            if (storeSection) {
+                // Code shamelessly stolen from Cookie Monster
+                Object.values(storeSection).forEach((section) => {
+                    if (this.neverCollapseUpgradeMenu === 1 || section.id === "products") {
+                        section.style.height = "auto";
+                    } else if (section.id === "vaultUpgrades") {
+                        section.style.height = '';
+                        section.style.minHeight = "0px";
+                    } else if (section.id === "upgrades") {
+                        section.style.height = '';
+
+                        if (section.className.includes("hasMenu")) {
+                            section.style.minHeight = "82px";
+                        } else {
+                            section.style.minHeight = "60px";
                         }
-                    });
-                }
+                    } else {
+                        section.style.height = '';
+                        section.style.minHeight = "60px";
+                    }
+                });
             }
         },
 
