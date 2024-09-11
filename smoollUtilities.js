@@ -39,15 +39,22 @@ if (smoollUtilities === undefined) {
 
         // Mod functions
         neverCollapseUpgradeMenu: function() {
-            if (this.neverCollapseUpgradeMenu == 1) {
+            if (this.neverCollapseUpgradeMenu === 1) {
                 if (upgrades) {
-                    upgrades.style.height = "auto";
+                    let stylesheet = document.styleSheets[0];
+                    let rules = stylesheet.cssRules;
+
+                    for (let i = 0; i < rules.length; i++) {
+                        if (rules[i].selectorText === ".upgradeBox") {
+                            rules[i].style.height = "auto";
+                        }
+                    }
                 }
             }
         },
 
         optionsMenu: function() {
-            if (Game.onMenu == "prefs") {
+            if (Game.onMenu === "prefs") {
                 let div = document.createElement("div");
                 div.className = "block";
                 div.style.padding = "0px";
@@ -69,7 +76,7 @@ if (smoollUtilities === undefined) {
         },
 
         statsMenu: function() {
-            if (Game.onMenu == "stats") {
+            if (Game.onMenu === "stats") {
                 let div = document.createElement("div");
                 div.className = "listing";
                 div.innerHTML = `<b>${this.name}:</b> ${this.version}`;
