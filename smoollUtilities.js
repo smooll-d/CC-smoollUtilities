@@ -40,9 +40,9 @@ if (smoollUtilities === undefined) {
         neverCollapseUpgradeMenu: function() {
             let upgrades = document.querySelector("#upgrades.storeSection.upgradeBox");
 
-            if (this.prefsNeverCollapseUpgradeMenu === 1) {
+            if (Game.prefs.neverCollapseUpgradeMenu === 1) {
                 upgrades.style.height = "auto";
-            } else if (this.prefsNeverCollapseUpgradeMenu === 0) {
+            } else if (Game.prefs.neverCollapseUpgradeMenu === 0) {
                 upgrades.removeAttribute("style");
             }
         },
