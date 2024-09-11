@@ -44,7 +44,7 @@ if (smoollUtilities === undefined) {
             if (Game.prefs.neverCollapseUpgradeMenu === 1) {
                 upgrades.style.height = "auto";
             } else if (Game.prefs.neverCollapseUpgradeMenu === 0) {
-                upgrades.style.height = "60px";
+                upgrades.removeAttribute("style");
             }
         },
 
