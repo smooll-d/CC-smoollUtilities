@@ -4,7 +4,6 @@
 //TODO: add version history to "Info" menu (which I need the collapsible button for)
 
 var menu = document.getElementById("menu");
-var storeSection = document.getElementsByClassName("storeSection");
 
 if (smoollUtilities === undefined) {
     var smoollUtilities = {
@@ -12,6 +11,7 @@ if (smoollUtilities === undefined) {
         name: "smoollUtilities",
         version: "0.1",
         neverCollapseUpgradeMenu: Game.prefs.neverCollapseUpgradeMenu,
+        mod: Game.mods[this.name],
 
         // Functions required for this (and every other) mod to work
         init: function() {
@@ -22,8 +22,8 @@ if (smoollUtilities === undefined) {
             Game.UpdateMenu = function() {
                 CCUpdateMenu();
 
-                smoollUtilities.optionsMenu();
-                smoollUtilities.statsMenu();
+                mod.optionsMenu();
+                mod.statsMenu();
             };
 
             Game.Notify(this.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5], 3);
@@ -41,9 +41,9 @@ if (smoollUtilities === undefined) {
         neverCollapseUpgradeMenu: function() {
             let upgrades = document.querySelector("#upgrades.storeSection.upgradeBox");
 
-            if (Game.prefs.neverCollapseUpgradeMenu === 1) {
+            if (this.neverCollapseUpgradeMenu === 1) {
                 upgrades.style.height = "auto";
-            } else if (Game.prefs.neverCollapseUpgradeMenu === 0) {
+            } else if (this.neverCollapseUpgradeMenu === 0) {
                 upgrades.removeAttribute("style");
             }
         },
@@ -59,7 +59,7 @@ if (smoollUtilities === undefined) {
                                          ${this.name}
                                      </div>
                                      <div class="listing">
-                                         ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu", this.neverCollapseUpgradeMenu())}
+                                         ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu", mod.neverCollapseUpgradeMenu())}
                                          <label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over menu</label>
                                      </div>
                                 </div>`;
