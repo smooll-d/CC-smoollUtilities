@@ -39,7 +39,7 @@ if (smoollUtilities === undefined) {
 
         // Mod functions
         neverCollapseUpgradeMenu: function() {
-            if (this.neverCollapseUpgradeMenu === 1) {
+            if (Game.prefs.neverCollapseUpgradeMenu === 1) {
                 if (storeSection) {
                     console.log("Hello, storeSection!");
                     // Code shamelessly stolen from Cookie Monster
