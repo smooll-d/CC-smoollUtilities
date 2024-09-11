@@ -34,6 +34,10 @@ if (smoollUtilities === undefined) {
         },
 
         // Mod functions
+        neverCollapseUpgradeMenu: function() {
+            console.log("The upgrade menu is not collapsing.");
+        },
+
         optionsMenu: function() {
             if (Game.onMenu == "prefs") {
                 let div = document.createElement("div");
@@ -45,7 +49,7 @@ if (smoollUtilities === undefined) {
                                          ${this.name}
                                      </div>
                                      <div class="listing">
-                                         ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu")}
+                                         ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu", this.neverCollapseUpgradeMenu)}
                                          <label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over menu</label>
                                      </div>
                                 </div>`;
@@ -65,8 +69,6 @@ if (smoollUtilities === undefined) {
                 if (menu) {
                     let menuNode = document.getElementsByClassName("subsection")[0];
                     menuNode.childNodes[3].after(div);
-                    //let generalNode = general.parentElement;
-                    //generalNode.lastElementChild.after(div);
                 }
             }
         }
