@@ -21,8 +21,8 @@ if (smoollUtilities === undefined) {
             Game.UpdateMenu = function() {
                 CCUpdateMenu();
 
-                Game.mods[this.name].optionsMenu();
-                Game.mods[this.name].statsMenu();
+                Game.mods["smoollUtilities"].optionsMenu();
+                Game.mods["smoollUtilities"].statsMenu();
             };
 
             Game.Notify(this.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5], 3);
@@ -58,7 +58,7 @@ if (smoollUtilities === undefined) {
                                          ${this.name}
                                      </div>
                                      <div class="listing">
-                                         ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu", Game.mods[this.name].neverCollapseUpgradeMenu())}
+                                         ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu", Game.mods["smoollUtilities"].neverCollapseUpgradeMenu())}
                                          <label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over menu</label>
                                      </div>
                                 </div>`;
