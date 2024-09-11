@@ -49,7 +49,7 @@ if (smoollUtilities === undefined) {
                                          ${this.name}
                                      </div>
                                      <div class="listing">
-                                         ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu", this.neverCollapseUpgradeMenu)}
+                                         ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu", this.neverCollapseUpgradeMenu())}
                                          <label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over menu</label>
                                      </div>
                                 </div>`;
