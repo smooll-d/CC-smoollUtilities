@@ -21,8 +21,8 @@ if (smoollUtilities === undefined) {
             Game.UpdateMenu = function() {
                 CCUpdateMenu();
 
-                this.optionsMenu();
-                this.statsMenu();
+                smoollUtilities.optionsMenu();
+                smoollUtilities.statsMenu();
             };
 
             Game.Notify(this.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5], 3);
