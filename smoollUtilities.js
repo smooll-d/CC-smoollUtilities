@@ -40,6 +40,7 @@ if (smoollUtilities === undefined) {
         // Mod functions
         neverCollapseUpgradeMenu: function() {
             if (storeSection) {
+                console.log("Hello, storeSection!");
                 // Code shamelessly stolen from Cookie Monster
                 Object.values(storeSection).forEach((section) => {
                     if (this.neverCollapseUpgradeMenu === 1 || section.id === "products") {
