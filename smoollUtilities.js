@@ -4,7 +4,7 @@
 //TODO: add version history to "Info" menu (which I need the collapsible button for)
 
 var menu = document.getElementById("menu");
-var upgrades = document.getElementById("upgrades");
+var storeSection = document.getElementsByClassName("storeSection");
 
 if (smoollUtilities === undefined) {
     var smoollUtilities = {
@@ -40,15 +40,12 @@ if (smoollUtilities === undefined) {
         // Mod functions
         neverCollapseUpgradeMenu: function() {
             if (this.neverCollapseUpgradeMenu === 1) {
-                if (upgrades) {
-                    let stylesheet = document.styleSheets[0];
-                    let rules = stylesheet.cssRules;
-
-                    for (let i = 0; i < rules.length; i++) {
-                        if (rules[i].selectorText === ".upgradeBox") {
-                            rules[i].style.height = "auto";
+                if (storeSection) {
+                    Object.values(storeSection).forEach((section) => {
+                        if (section.id === "upgrades") {
+                            section.style.height = '';
                         }
-                    }
+                    });
                 }
             }
         },
