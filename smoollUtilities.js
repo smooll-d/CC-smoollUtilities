@@ -40,34 +40,36 @@ if (smoollUtilities === undefined) {
         // Mod functions
         neverCollapseUpgradeMenu: function() {
             if (Game.prefs.neverCollapseUpgradeMenu === 1) {
-                if (storeSection) {
-                    console.log("Hello, storeSection!");
-                    // Code shamelessly stolen from Cookie Monster
-                    Object.values(storeSection).forEach((section) => {
-                        if (section.id === "products") {
-                            section.style.height = "auto";
-                            console.log("products");
-                        } else if (section.id === "vaultUpgrades") {
-                            section.style.height = '';
-                            section.style.minHeight = "0px";
-                            console.log("vaultUpgrades");
-                        } else if (section.id === "upgrades") {
-                            section.style.height = '';
+                let upgrades = document.querySelector("#upgrades.storeSection.upgradeBox");
+                upgrades.style.height = "auto";
+                //if (storeSection) {
+                //    console.log("Hello, storeSection!");
+                //    // Code shamelessly stolen from Cookie Monster
+                //    Object.values(storeSection).forEach((section) => {
+                //        if (section.id === "products") {
+                //            section.style.height = "auto";
+                //            console.log("products");
+                //        } else if (section.id === "vaultUpgrades") {
+                //            section.style.height = '';
+                //            section.style.minHeight = "0px";
+                //            console.log("vaultUpgrades");
+                //        } else if (section.id === "upgrades") {
+                //            section.style.height = '';
 
-                            if (section.className.includes("hasMenu")) {
-                                section.style.minHeight = "82px";
-                            } else {
-                                section.style.minHeight = "60px";
-                            }
+                //            if (section.className.includes("hasMenu")) {
+                //                section.style.minHeight = "82px";
+                //            } else {
+                //                section.style.minHeight = "60px";
+                //            }
 
-                            console.log("upgrades");
-                        } else {
-                            section.style.height = '';
-                            section.style.minHeight = "60px";
-                            console.log("storeSection");
-                        }
-                    });
-                }
+                //            console.log("upgrades");
+                //        } else {
+                //            section.style.height = '';
+                //            section.style.minHeight = "60px";
+                //            console.log("storeSection");
+                //        }
+                //    });
+                //}
             }
         },
 
