@@ -10,7 +10,7 @@ if (smoollUtilities === undefined) {
         // Mod variables
         name: "smoollUtilities",
         version: "0.1",
-        neverCollapseUpgradeMenu: Game.prefs.neverCollapseUpgradeMenu,
+        prefsNeverCollapseUpgradeMenu: Game.prefs.neverCollapseUpgradeMenu,
 
         // Functions required for this (and every other) mod to work
         init: function() {
@@ -21,8 +21,8 @@ if (smoollUtilities === undefined) {
             Game.UpdateMenu = function() {
                 CCUpdateMenu();
 
-                Game.mods["smoollUtilities"].optionsMenu();
-                Game.mods["smoollUtilities"].statsMenu();
+                this.optionsMenu();
+                this.statsMenu();
             };
 
             Game.Notify(this.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5], 3);
@@ -40,9 +40,9 @@ if (smoollUtilities === undefined) {
         neverCollapseUpgradeMenu: function() {
             let upgrades = document.querySelector("#upgrades.storeSection.upgradeBox");
 
-            if (this.neverCollapseUpgradeMenu === 1) {
+            if (this.prefsNeverCollapseUpgradeMenu === 1) {
                 upgrades.style.height = "auto";
-            } else if (this.neverCollapseUpgradeMenu === 0) {
+            } else if (this.prefsNeverCollapseUpgradeMenu === 0) {
                 upgrades.removeAttribute("style");
             }
         },
@@ -58,7 +58,7 @@ if (smoollUtilities === undefined) {
                                          ${this.name}
                                      </div>
                                      <div class="listing">
-                                         ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu", Game.mods["smoollUtilities"].neverCollapseUpgradeMenu())}
+                                         ${Game.WritePrefButton("neverCollapseUpgradeMenu", "ncumButton", "Never Collapse Upgrade Menu", "Never Collapse Upgrade Menu", "Game.mods['smoollUtilities'].neverCollapseUpgradeMenu();")}
                                          <label>Open upgrade menu fully and never collapse it, even if cursor is not hovering over menu</label>
                                      </div>
                                 </div>`;
