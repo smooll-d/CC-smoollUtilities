@@ -4,15 +4,19 @@
 //TODO: add version history to "Info" menu (which I need the collapsible button for)
 
 var menu = document.getElementById("menu");
+var upgrades = document.getElementById("upgrades");
 
 if (smoollUtilities === undefined) {
     var smoollUtilities = {
         // Mod variables
         name: "smoollUtilities",
         version: "0.1",
+        neverCollapseUpgradeMenu: Game.prefs.neverCollapseUpgradeMenu,
 
         // Functions required for this (and every other) mod to work
         init: function() {
+            Game.prefs.neverCollapseUpgradeMenu = 0;
+
             const CCUpdateMenu = Game.UpdateMenu;
 
             Game.UpdateMenu = function() {
@@ -35,7 +39,11 @@ if (smoollUtilities === undefined) {
 
         // Mod functions
         neverCollapseUpgradeMenu: function() {
-            console.log("The upgrade menu is not collapsing.");
+            if (this.neverCollapseUpgradeMenu == 1) {
+                if (upgrades) {
+                    upgrades.style.height = "auto";
+                }
+            }
         },
 
         optionsMenu: function() {
