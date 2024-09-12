@@ -3,6 +3,7 @@
 //TODO: add fixes for Steam version
 
 var menu = document.getElementById("menu");
+var span = document.createElement("span");
 
 if (smoollUtilities === undefined) {
     var smoollUtilities = {
@@ -25,23 +26,23 @@ if (smoollUtilities === undefined) {
         },
 
         save: function() {
-            let ncum = JSON.stringify(Game.prefs.neverCollapseUpgradesMenu);
-            let tcb = JSON.stringify(Game.prefs.toggleCollapsibleButton);
+            let ncum = JSON.stringify(Game.prefs.sUNeverCollapseUpgradesMenu);
+            let tcb = JSON.stringify(Game.prefs.sUToggleCollapsibleButton);
             
             return ncum;
         },
 
         load: function(str) {
-            Game.prefs.neverCollapseUpgradesMenu = parseInt(str || 0);
-            Game.prefs.toggleCollapsibleButton = parseInt(str || 0);
+            Game.prefs.sUNeverCollapseUpgradesMenu = parseInt(str || 0);
+            Game.prefs.sUToggleCollapsibleButton = parseInt(str || 0);
 
             smoollUtilities.neverCollapseUpgradesMenu();
+            smoollUtilities.toggleCollapsibleButton();
         },
 
         // Helper functions
         collapsibleButton: function() {
             // Stolen wholesale from CCSE, which in turn stole it from Cookie Monster
-            let span = document.createElement("span");
             span.style.cursor = "pointer";
             span.style.display = "inline-block";
             span.style.height = "14px";
@@ -52,9 +53,13 @@ if (smoollUtilities === undefined) {
             span.style.color = "black";
             span.style.fontSize = "13px";
             span.style.verticalAlign = "middle";
-            span.textContent = Game.prefs.toggleCollapsibleButton ? "+" : "-";
+            span.textContent = this.toggleCollapsibleButton();
 
             return span;
+        },
+
+        toggleCollapsibleButton: function() {
+            return Game.prefs.toggleCollapsibleButton ? "+" : "-";
         },
 
         // Mod functions
