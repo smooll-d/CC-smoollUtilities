@@ -9,6 +9,7 @@ if (smoollUtilities === undefined) {
         // Mod metadata
         name: "smoollUtilities",
         version: "0.3",
+        collapseMenu: {},
 
         // Functions required for this (and every other) mod to work
         init: function() {
@@ -50,24 +51,19 @@ if (smoollUtilities === undefined) {
         },
 
         toggleCollapsibleButton: function() {
-            let subsectionDiv = document.querySelector("#sUOptionsMenu");
-            let listingDiv = subsectionDiv.querySelector(".listing");
-
             if (Game.prefs.sUToggleCollapsibleButton === 0) {
-                Game.prefs.sUToggleCollapsibleButton++;
-                subsectionDiv.appendChild();
-                return "+";
+                this.collapseMenu[this.name]++;
             } else if (Game.prefs.sUToggleCollapsibleButton === 1) {
-                Game.prefs.sUToggleCollapsibleButton--;
-                if (listingDiv.parentElement) {
-                    subsectionDiv.removeChild(listingDiv);
-                }
-                return "-";
+                this.collapseMenu[this.name]--;
             }
         },
 
         optionsMenu: function() {
             if (Game.onMenu === "prefs") {
+                if (this.collapseMenu[this.name] === undefined) {
+                    this.collapseMenu[this.name] = 1;
+                }
+
                 // Stolen wholesale from CCSE, which in turn stole it wholesale from Cookie Monster
                 let span = document.createElement("span");
                 span.style.cursor = "pointer";
@@ -80,7 +76,7 @@ if (smoollUtilities === undefined) {
                 span.style.color = "black";
                 span.style.fontSize = "13px";
                 span.style.verticalAlign = "middle";
-                span.textContent = Game.prefs.sUToggleCollapsibleButton === 0 ? "+" : "-";
+                span.textContent = this.collapseMenu[this.name] === 0 ? "+" : "-";
                 span.addEventListener("click", function() {
                     smoollUtilities.toggleCollapsibleButton();
                     Game.UpdateMenu();
@@ -101,7 +97,9 @@ if (smoollUtilities === undefined) {
                 subsectionDiv.id = "sUOptionsMenu";
                 subsectionDiv.style.padding = "0px";
                 subsectionDiv.appendChild(titleDiv);
-                subsectionDiv.appendChild(listingDiv);
+                if (this.collapseMenu[this.name] === 1) {
+                    subsectionDiv.appendChild(listingDiv);
+                }
 
                 let optionsDiv = document.createElement("div");
                 optionsDiv.className = "block";
