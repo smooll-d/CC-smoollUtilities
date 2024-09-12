@@ -55,13 +55,13 @@ if (smoollUtilities === undefined) {
 
             if (Game.prefs.sUToggleCollapsibleButton === 0) {
                 Game.prefs.sUToggleCollapsibleButton++;
-                if (listingDiv.parentElement) {
-                    listingDiv.remove();
-                }
+                subsectionDiv.appendChild();
                 return "+";
             } else if (Game.prefs.sUToggleCollapsibleButton === 1) {
                 Game.prefs.sUToggleCollapsibleButton--;
-                subsectionDiv.appendChild();
+                if (listingDiv.parentElement) {
+                    listingDiv.remove();
+                }
                 return "-";
             }
         },
