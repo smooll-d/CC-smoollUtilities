@@ -47,22 +47,25 @@ if (smoollUtilities === undefined) {
 
         optionsMenu: function() {
             if (Game.onMenu === "prefs") {
-                let div = document.createElement("div");
-                div.className = "block";
-                div.style.padding = "0px";
-                div.style.margin = "8px 4px";
-                div.innerHTML = `<div class="subsection" style="padding:0px;">
-                                     <div class="title">
-                                         ${this.name}
-                                     </div>
-                                     <div class="listing">
-                                         ${Game.WritePrefButton("neverCollapseUpgradesMenu", "ncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.neverCollapseUpgradesMenu();")}
-                                         <label>Keep upgrades menu as if it was always being hovered over</label>
-                                     </div>
-                                </div>`;
+                let titleDiv = document.createElement("div");
+                titleDiv.className = "title";
+                titleDiv.textContent = `${this.name} `;
+
+                let listingDiv = document.createElement("div");
+                listingDiv.className = "listing";
+                listingDiv.innerHTML = `${Game.WritePrefButton("neverCollapseUpgradesMenu", "ncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.neverCollapseUpgradesMenu();")}
+                                        <label>Keep upgrades menu as if it was always being hovered over</label>`;
+
+                let optionsDiv = document.createElement("div");
+                optionsDiv.className = "block";
+                optionsDiv.style.padding = "0px";
+                optionsDiv.style.margin = "8px 4px";
+                optionsDiv.innerHTML = `<div class="subsection" style="padding:0px;"></div>`;
+                optionsDiv.appendChild(titleDiv);
+                optionsDiv.appendChild(listingDiv);
 
                 if (menu) {
-                    menu.childNodes[3].after(div);
+                    menu.childNodes[3].after(optionsDiv);
                 }
             }
         },
