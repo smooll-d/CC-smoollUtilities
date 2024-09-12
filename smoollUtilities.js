@@ -53,7 +53,7 @@ if (smoollUtilities === undefined) {
             span.style.color = "black";
             span.style.fontSize = "13px";
             span.style.verticalAlign = "middle";
-            span.textContent = smoollUtilities.toggleCollapsibleButton();
+            span.textContent = Game.prefs.sUToggleCollapsibleButton === 0 ? "+" : "-";
             span.addEventListener("click", function() {
                 smoollUtilities.toggleCollapsibleButton();
             });
