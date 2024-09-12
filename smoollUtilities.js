@@ -63,8 +63,10 @@ if (smoollUtilities === undefined) {
 
         toggleCollapsibleButton: function() {
             if (Game.prefs.sUToggleCollapsibleButton === 0) {
+                Game.prefs.sUToggleCollapsibleButton++;
                 return "+";
             } else if (Game.prefs.sUToggleCollapsibleButton === 1) {
+                Game.prefs.sUToggleCollapsibleButton--;
                 return "-";
             }
 
