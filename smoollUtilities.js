@@ -30,7 +30,7 @@ if (smoollUtilities === undefined) {
             Game.prefs.neverCollapseUpgradesMenu = JSON.stringify(Game.prefs.neverCollapseUpgradesMenu);
             Game.prefs.toggleCollapsibleButton = JSON.stringify(Game.prefs.toggleCollapsibleButton);
 
-            //return Game.prefs[ncum, tcb];
+            return [Game.prefs.neverCollapseUpgradesMenu, Game.prefs.toggleCollapsibleButton];
         },
 
         load: function(str) {
