@@ -53,9 +53,9 @@ if (smoollUtilities === undefined) {
             span.style.color = "black";
             span.style.fontSize = "13px";
             span.style.verticalAlign = "middle";
-            span.textContent = this.toggleCollapsibleButton();
+            span.textContent = smoollUtilities.toggleCollapsibleButton();
             span.addEventListener("click", function() {
-                this.toggleCollapsibleButton();
+                smoollUtilities.toggleCollapsibleButton();
             });
 
             return span;
