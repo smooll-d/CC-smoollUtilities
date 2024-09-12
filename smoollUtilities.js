@@ -34,7 +34,7 @@ if (smoollUtilities === undefined) {
 
         load: function(str) {
             Game.prefs.sUNeverCollapseUpgradesMenu = parseInt(str || 0);
-            Game.prefs.sUToggleCollapsibleButton = parseInt(str || 1);
+            Game.prefs.sUToggleCollapsibleButton = parseInt(str || 0);
 
             smoollUtilities.neverCollapseUpgradesMenu();
         },
@@ -51,19 +51,15 @@ if (smoollUtilities === undefined) {
         },
 
         toggleCollapsibleButton: function() {
-            if (this.collapseMenu[this.name] === 0) {
-                this.collapseMenu[this.name]++;
-            } else if (this.collapseMenu[this.name] === 1) {
-                this.collapseMenu[this.name]--;
+            if (Game.prefs.sUToggleCollapsibleButton === 0) {
+                Game.prefs.sUToggleCollapsibleButton++;
+            } else if (Game.prefs.sUToggleCollapsibleButton === 1) {
+                Game.prefs.sUToggleCollapsibleButton--;
             }
         },
 
         optionsMenu: function() {
             if (Game.onMenu === "prefs") {
-                if (this.collapseMenu[this.name] === undefined) {
-                    this.collapseMenu[this.name] = 0;
-                }
-
                 // Stolen wholesale from CCSE, which in turn stole it wholesale from Cookie Monster
                 let span = document.createElement("span");
                 span.style.cursor = "pointer";
@@ -76,7 +72,7 @@ if (smoollUtilities === undefined) {
                 span.style.color = "black";
                 span.style.fontSize = "13px";
                 span.style.verticalAlign = "middle";
-                span.textContent = this.collapseMenu[this.name] ? "+" : "-";
+                span.textContent = Game.prefs.sUToggleCollapsibleButton ? "+" : "-";
                 span.addEventListener("click", function() {
                     smoollUtilities.toggleCollapsibleButton();
                     Game.UpdateMenu();
@@ -97,7 +93,7 @@ if (smoollUtilities === undefined) {
                 subsectionDiv.id = "sUOptionsMenu";
                 subsectionDiv.style.padding = "0px";
                 subsectionDiv.appendChild(titleDiv);
-                if (!this.collapseMenu[this.name]) {
+                if (!Game.prefs.sUToggleCollapsibleButton) {
                     subsectionDiv.appendChild(listingDiv);
                 }
 
