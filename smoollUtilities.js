@@ -1,6 +1,6 @@
 //TODO: add collapsible button
-//TODO: add version history to "Info" menu (which I need the collapsible button for)
 //TODO: add fixes for Steam version
+//TODO: add version history to "Info" menu (which I need the collapsible button for)
 
 var menu = document.getElementById("menu");
 
@@ -60,7 +60,7 @@ if (smoollUtilities === undefined) {
             } else if (Game.prefs.sUToggleCollapsibleButton === 1) {
                 Game.prefs.sUToggleCollapsibleButton--;
                 if (listingDiv.parentElement) {
-                    listingDiv.remove();
+                    subsectionDiv.removeChild(listingDiv);
                 }
                 return "-";
             }
