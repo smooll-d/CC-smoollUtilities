@@ -33,6 +33,7 @@ if (smoollUtilities === undefined) {
 
         load: function(str) {
             Game.prefs.neverCollapseUpgradesMenu = parseInt(str || 0);
+            smoollUtilities.neverCollapseUpgradesMenu();
         },
 
         // Mod functions
