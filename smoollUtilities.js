@@ -10,6 +10,7 @@ if (smoollUtilities === undefined) {
         name: "smoollUtilities",
         version: "0.3",
         collapseMenu: {},
+        localSUcollapseMenu: "sUCollapseMenu",
 
         // Functions required for this (and every other) mod to work
         init: function() {
@@ -26,13 +27,22 @@ if (smoollUtilities === undefined) {
         },
 
         save: function() {
+            if (!this.collapseMenu) {
+                return
+            }
+
             let ncum = JSON.stringify(Game.prefs.sUNeverCollapseUpgradesMenu);
+            let collapseMenu = JSON.stringify(this.collapseMenu);
+
+            window.localStorage.setItem(this.localSUcollapseMenu, collapseMenu);
 
             return ncum;
         },
 
         load: function(str) {
             Game.prefs.sUNeverCollapseUpgradesMenu = parseInt(str || 0);
+
+            this.collapseMenu = window.localStorage.getItem(this.localSUcollapseMenu);
 
             smoollUtilities.toggleNeverCollapseUpgradesMenu();
         },
@@ -56,7 +66,7 @@ if (smoollUtilities === undefined) {
             }
         },
 
-        createCollapsibleButton() {
+        createCollapsibleButton: function() {
             // Stolen wholesale from CCSE, which in turn stole it wholesale from Cookie Monster
             let span = document.createElement("span");
             span.style.cursor = "pointer";
@@ -111,7 +121,11 @@ if (smoollUtilities === undefined) {
                 optionsDiv.appendChild(subsectionDiv);
 
                 if (menu) {
-                    menu.childNodes[3].after(optionsDiv);
+                    if (App) {
+                        menu.childNodes[4].after(optionsDiv);
+                    } else {
+                        menu.childNodes[3].after(optionsDiv);
+                    }
                 }
             }
         },
