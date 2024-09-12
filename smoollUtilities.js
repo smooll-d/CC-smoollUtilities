@@ -56,13 +56,17 @@ if (smoollUtilities === undefined) {
                 listingDiv.innerHTML = `${Game.WritePrefButton("neverCollapseUpgradesMenu", "ncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.neverCollapseUpgradesMenu();")}
                                         <label>Keep upgrades menu as if it was always being hovered over</label>`;
 
+                let subsectionDiv = document.createElement("div");
+                subsectionDiv.innerHTML = `<div class="subsection" style="padding:0px;"></div>`;
+                subsectionDiv.appendChild(titleDiv);
+                subsectionDiv.appendChild(listingDiv);
+
                 let optionsDiv = document.createElement("div");
                 optionsDiv.className = "block";
                 optionsDiv.style.padding = "0px";
                 optionsDiv.style.margin = "8px 4px";
                 optionsDiv.innerHTML = `<div class="subsection" style="padding:0px;"></div>`;
-                optionsDiv.appendChild(titleDiv);
-                optionsDiv.appendChild(listingDiv);
+                optionsDiv.appendChild(subsectionDiv);
 
                 if (menu) {
                     menu.childNodes[3].after(optionsDiv);
