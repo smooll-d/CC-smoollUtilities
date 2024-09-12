@@ -34,7 +34,7 @@ if (smoollUtilities === undefined) {
 
         load: function(str) {
             Game.prefs.sUNeverCollapseUpgradesMenu = parseInt(str || 0);
-            Game.prefs.sUToggleCollapsibleButton = parseInt(str || 0);
+            Game.prefs.sUToggleCollapsibleButton = parseInt(str || 1);
 
             smoollUtilities.neverCollapseUpgradesMenu();
             smoollUtilities.toggleCollapsibleButton();
@@ -56,6 +56,7 @@ if (smoollUtilities === undefined) {
             span.textContent = Game.prefs.sUToggleCollapsibleButton === 0 ? "+" : "-";
             span.addEventListener("click", function() {
                 smoollUtilities.toggleCollapsibleButton();
+                Game.UpdateMenu();
             });
 
             return span;
