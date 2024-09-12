@@ -27,14 +27,12 @@ if (smoollUtilities === undefined) {
 
         save: function() {
             let ncum = JSON.stringify(Game.prefs.sUNeverCollapseUpgradesMenu);
-            let tcb = JSON.stringify(Game.prefs.sUToggleCollapsibleButton);
 
             return ncum;
         },
 
         load: function(str) {
             Game.prefs.sUNeverCollapseUpgradesMenu = parseInt(str || 0);
-            Game.prefs.sUToggleCollapsibleButton = parseInt(str || 0);
 
             smoollUtilities.neverCollapseUpgradesMenu();
         },
@@ -51,15 +49,19 @@ if (smoollUtilities === undefined) {
         },
 
         toggleCollapsibleButton: function() {
-            if (Game.prefs.sUToggleCollapsibleButton === 0) {
-                Game.prefs.sUToggleCollapsibleButton++;
-            } else if (Game.prefs.sUToggleCollapsibleButton === 1) {
-                Game.prefs.sUToggleCollapsibleButton--;
+            if (this.collapseMenu[this.name] === 0) {
+                this.collapseMenu[this.name]++;
+            } else if (this.collapseMenu[this.name] === 1) {
+                this.collapseMenu[this.name]--;
             }
         },
 
         optionsMenu: function() {
             if (Game.onMenu === "prefs") {
+                if (this.collapseMenu[this.name] === undefined) {
+                    this.collapseMenu[this.name] = 0;
+                }
+
                 // Stolen wholesale from CCSE, which in turn stole it wholesale from Cookie Monster
                 let span = document.createElement("span");
                 span.style.cursor = "pointer";
@@ -72,7 +74,7 @@ if (smoollUtilities === undefined) {
                 span.style.color = "black";
                 span.style.fontSize = "13px";
                 span.style.verticalAlign = "middle";
-                span.textContent = Game.prefs.sUToggleCollapsibleButton ? "+" : "-";
+                span.textContent = this.collapseMenu[this.name] ? "+" : "-";
                 span.addEventListener("click", function() {
                     smoollUtilities.toggleCollapsibleButton();
                     Game.UpdateMenu();
@@ -85,7 +87,7 @@ if (smoollUtilities === undefined) {
 
                 let listingDiv = document.createElement("div");
                 listingDiv.className = "listing";
-                listingDiv.innerHTML = `${Game.WritePrefButton("neverCollapseUpgradesMenu", "ncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.neverCollapseUpgradesMenu();")}
+                listingDiv.innerHTML = `${Game.WritePrefButton("sUNeverCollapseUpgradesMenu", "ncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.neverCollapseUpgradesMenu();")}
                                         <label>Keep upgrades menu as if it was always being hovered over</label>`;
 
                 let subsectionDiv = document.createElement("div");
@@ -93,7 +95,7 @@ if (smoollUtilities === undefined) {
                 subsectionDiv.id = "sUOptionsMenu";
                 subsectionDiv.style.padding = "0px";
                 subsectionDiv.appendChild(titleDiv);
-                if (!Game.prefs.sUToggleCollapsibleButton) {
+                if (!this.collapseMenu[this.name]) {
                     subsectionDiv.appendChild(listingDiv);
                 }
 
