@@ -84,19 +84,22 @@ if (smoollUtilities === undefined) {
                 titleDiv.textContent = `${this.name} `;
                 titleDiv.appendChild(span);
 
+                let listingDiv = document.createElement("div");
+                listingDiv.className = "listing";
+                listingDiv.innerHTML = `${Game.WritePrefButton("neverCollapseUpgradesMenu", "ncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.neverCollapseUpgradesMenu();")}
+                                        <label>Keep upgrades menu as if it was always being hovered over</label>`;
+
+                let subsectionDiv = document.createElement("div");
+                subsectionDiv.className = "subsection";
+                subsectionDiv.style.padding = "0px";
+                subsectionDiv.appendChild(titleDiv);
+                subsectionDiv.appendChild(listingDiv);
+
                 let optionsDiv = document.createElement("div");
                 optionsDiv.className = "block";
                 optionsDiv.style.padding = "0px";
                 optionsDiv.style.margin = "8px 4px";
-                optionsDiv.innerHTML = `<div class="subsection" style="padding:0px;">
-                                            <div class="listing">
-                                                ${Game.WritePrefButton("neverCollapseUpgradesMenu", "ncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.neverCollapseUpgradesMenu();")}
-                                                <label>Keep upgrades menu as if it was always being hovered over</label>
-                                            </div>
-                                        </div>`;
-
-                let subsectionDiv = optionsDiv.querySelector(".subsection");
-                optionsDiv.insertBefore(titleDiv, subsectionDiv.firstChild);
+                optionsDiv.appendChild(subsectionDiv);
 
                 if (menu) {
                     menu.childNodes[3].after(optionsDiv);
