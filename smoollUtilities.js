@@ -55,7 +55,9 @@ if (smoollUtilities === undefined) {
 
             if (Game.prefs.sUToggleCollapsibleButton === 0) {
                 Game.prefs.sUToggleCollapsibleButton++;
-                subsectionDiv.removeChild(listingDiv);
+                if (listingDiv.parentElement) {
+                    subsectionDiv.removeChild(listingDiv);
+                }
                 return "+";
             } else if (Game.prefs.sUToggleCollapsibleButton === 1) {
                 Game.prefs.sUToggleCollapsibleButton--;
