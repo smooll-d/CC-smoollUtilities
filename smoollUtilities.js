@@ -34,6 +34,25 @@ if (smoollUtilities === undefined) {
             smoollUtilities.neverCollapseUpgradesMenu();
         },
 
+        // Helper functions
+        collapsibleButton: function() {
+            // Stolen wholesale from CCSE, which in turn stole it from Cookie Monster
+            let span = document.createElement("span");
+            span.style.cursor = "pointer";
+            span.style.display = "inline-block";
+            span.style.height = "14px";
+            span.style.width = "14px";
+            span.style.borderRadius = "7px";
+            span.style.textAlign = "center";
+            span.style.backgroundColor = "#C0C0C0";
+            span.style.color = "black";
+            span.style.fontSize = "13px";
+            span.style.verticalAlign = "middle";
+            span.textContent = '+';
+
+            return span;
+        },
+
         // Mod functions
         neverCollapseUpgradesMenu: function() {
             let upgrades = document.querySelector("#upgrades.storeSection.upgradeBox");
@@ -50,6 +69,7 @@ if (smoollUtilities === undefined) {
                 let titleDiv = document.createElement("div");
                 titleDiv.className = "title";
                 titleDiv.textContent = `${this.name} `;
+                titleDiv.appendChild(this.collapsibleButton());
 
                 let listingDiv = document.createElement("div");
                 listingDiv.className = "listing";
