@@ -59,16 +59,22 @@ if (smoollUtilities === undefined) {
         },
 
         toggleCollapsibleButton: function() {
-            return Game.prefs.toggleCollapsibleButton ? "+" : "-";
+            if (Game.prefs.sUToggleCollapsibleButton === 0) {
+                return "+";
+            } else if (Game.prefs.sUToggleCollapsibleButton === 1) {
+                return "-";
+            }
+
+            return "n";
         },
 
         // Mod functions
         neverCollapseUpgradesMenu: function() {
             let upgrades = document.querySelector("#upgrades.storeSection.upgradeBox");
 
-            if (Game.prefs.neverCollapseUpgradesMenu === 1) {
+            if (Game.prefs.sUNeverCollapseUpgradesMenu === 1) {
                 upgrades.style.height = "auto";
-            } else if (Game.prefs.neverCollapseUpgradesMenu === 0) {
+            } else if (Game.prefs.sUNeverCollapseUpgradesMenu === 0) {
                 upgrades.removeAttribute("style");
             }
         },
