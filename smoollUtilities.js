@@ -27,11 +27,12 @@ if (smoollUtilities === undefined) {
         },
 
         save: function() {
-            // look at all this code!
+            let prefs = JSON.parse(Game.prefs.neverCollapseUpgradesMenu);
+            return prefs;
         },
 
         load: function(str) {
-            // and here's even more of it!
+            Game.prefs.neverCollapseUpgradesMenu = parseInt(str || 0);
         },
 
         // Mod functions
