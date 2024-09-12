@@ -27,7 +27,7 @@ if (smoollUtilities === undefined) {
         },
 
         save: function() {
-            let prefs = JSON.parse(Game.prefs.neverCollapseUpgradesMenu);
+            let prefs = JSON.stringify(Game.prefs.neverCollapseUpgradesMenu);
             return prefs;
         },
 
