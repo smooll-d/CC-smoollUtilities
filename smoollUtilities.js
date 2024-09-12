@@ -28,7 +28,7 @@ if (smoollUtilities === undefined) {
         save: function() {
             let ncum = JSON.stringify(Game.prefs.sUNeverCollapseUpgradesMenu);
             let tcb = JSON.stringify(Game.prefs.sUToggleCollapsibleButton);
-            
+
             return ncum;
         },
 
@@ -54,9 +54,8 @@ if (smoollUtilities === undefined) {
             span.style.fontSize = "13px";
             span.style.verticalAlign = "middle";
             span.textContent = this.toggleCollapsibleButton();
-
             span.addEventListener("click", function() {
-                console.log("closed");
+                this.toggleCollapsibleButton();
             });
 
             return span;
