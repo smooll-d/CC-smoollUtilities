@@ -71,7 +71,7 @@ if (smoollUtilities === undefined) {
             span.style.verticalAlign = "middle";
             span.textContent = this.collapseMenu[this.name] ? "+" : "-";
             span.addEventListener("click", function() {
-                smoollUtilities.toggleCollapsibleButton(this.name);
+                smoollUtilities.toggleCollapsibleButton(smoollUtilities.name);
                 Game.UpdateMenu();
             });
 
@@ -98,7 +98,6 @@ if (smoollUtilities === undefined) {
 
                 let subsectionDiv = document.createElement("div");
                 subsectionDiv.className = "subsection";
-                subsectionDiv.id = "sUOptionsMenu";
                 subsectionDiv.style.padding = "0px";
                 subsectionDiv.appendChild(titleDiv);
                 if (!this.collapseMenu[this.name]) {
