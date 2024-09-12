@@ -1,6 +1,6 @@
-//TODO: save and load state of "Never Collapse Upgrades Menu"
 //TODO: add collapsible button
 //TODO: add version history to "Info" menu (which I need the collapsible button for)
+//TODO: add fixes for Steam version
 
 var menu = document.getElementById("menu");
 
@@ -12,7 +12,7 @@ if (smoollUtilities === undefined) {
 
         // Functions required for this (and every other) mod to work
         init: function() {
-            Game.prefs.neverCollapseUpgradesMenu = 0;
+            //Game.prefs.neverCollapseUpgradesMenu = 0;
 
             const CCUpdateMenu = Game.UpdateMenu;
 
