@@ -57,7 +57,8 @@ if (smoollUtilities === undefined) {
                                         <label>Keep upgrades menu as if it was always being hovered over</label>`;
 
                 let subsectionDiv = document.createElement("div");
-                subsectionDiv.innerHTML = `<div class="subsection" style="padding:0px;"></div>`;
+                subsectionDiv.className = "subsection";
+                subsectionDiv.style.padding = "0px";
                 subsectionDiv.appendChild(titleDiv);
                 subsectionDiv.appendChild(listingDiv);
 
@@ -65,7 +66,6 @@ if (smoollUtilities === undefined) {
                 optionsDiv.className = "block";
                 optionsDiv.style.padding = "0px";
                 optionsDiv.style.margin = "8px 4px";
-                optionsDiv.innerHTML = `<div class="subsection" style="padding:0px;"></div>`;
                 optionsDiv.appendChild(subsectionDiv);
 
                 if (menu) {
