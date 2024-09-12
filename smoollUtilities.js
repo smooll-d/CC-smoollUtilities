@@ -34,11 +34,11 @@ if (smoollUtilities === undefined) {
         load: function(str) {
             Game.prefs.sUNeverCollapseUpgradesMenu = parseInt(str || 0);
 
-            smoollUtilities.neverCollapseUpgradesMenu();
+            smoollUtilities.toggleNeverCollapseUpgradesMenu();
         },
 
         // Mod functions
-        neverCollapseUpgradesMenu: function() {
+        toggleNeverCollapseUpgradesMenu: function() {
             let upgrades = document.querySelector("#upgrades.storeSection.upgradeBox");
 
             if (Game.prefs.sUNeverCollapseUpgradesMenu === 1) {
@@ -48,12 +48,34 @@ if (smoollUtilities === undefined) {
             }
         },
 
-        toggleCollapsibleButton: function() {
-            if (this.collapseMenu[this.name] === 0) {
-                this.collapseMenu[this.name]++;
-            } else if (this.collapseMenu[this.name] === 1) {
-                this.collapseMenu[this.name]--;
+        toggleCollapsibleButton: function(title) {
+            if (this.collapseMenu[title] === 0) {
+                this.collapseMenu[title]++;
+            } else if (this.collapseMenu[title] === 1) {
+                this.collapseMenu[title]--;
             }
+        },
+
+        createCollapsibleButton() {
+            // Stolen wholesale from CCSE, which in turn stole it wholesale from Cookie Monster
+            let span = document.createElement("span");
+            span.style.cursor = "pointer";
+            span.style.display = "inline-block";
+            span.style.height = "14px";
+            span.style.width = "14px";
+            span.style.borderRadius = "7px";
+            span.style.textAlign = "center";
+            span.style.backgroundColor = "#C0C0C0";
+            span.style.color = "black";
+            span.style.fontSize = "13px";
+            span.style.verticalAlign = "middle";
+            span.textContent = this.collapseMenu[this.name] ? "+" : "-";
+            span.addEventListener("click", function() {
+                smoollUtilities.toggleCollapsibleButton(this.name);
+                Game.UpdateMenu();
+            });
+
+            return span;
         },
 
         optionsMenu: function() {
@@ -62,23 +84,7 @@ if (smoollUtilities === undefined) {
                     this.collapseMenu[this.name] = 0;
                 }
 
-                // Stolen wholesale from CCSE, which in turn stole it wholesale from Cookie Monster
-                let span = document.createElement("span");
-                span.style.cursor = "pointer";
-                span.style.display = "inline-block";
-                span.style.height = "14px";
-                span.style.width = "14px";
-                span.style.borderRadius = "7px";
-                span.style.textAlign = "center";
-                span.style.backgroundColor = "#C0C0C0";
-                span.style.color = "black";
-                span.style.fontSize = "13px";
-                span.style.verticalAlign = "middle";
-                span.textContent = this.collapseMenu[this.name] ? "+" : "-";
-                span.addEventListener("click", function() {
-                    smoollUtilities.toggleCollapsibleButton();
-                    Game.UpdateMenu();
-                });
+                let span = this.createCollapsibleButton();
 
                 let titleDiv = document.createElement("div");
                 titleDiv.className = "title";
@@ -87,7 +93,7 @@ if (smoollUtilities === undefined) {
 
                 let listingDiv = document.createElement("div");
                 listingDiv.className = "listing";
-                listingDiv.innerHTML = `${Game.WritePrefButton("sUNeverCollapseUpgradesMenu", "ncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.neverCollapseUpgradesMenu();")}
+                listingDiv.innerHTML = `${Game.WritePrefButton("sUNeverCollapseUpgradesMenu", "ncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.toggleNeverCollapseUpgradesMenu();")}
                                         <label>Keep upgrades menu as if it was always being hovered over</label>`;
 
                 let subsectionDiv = document.createElement("div");
