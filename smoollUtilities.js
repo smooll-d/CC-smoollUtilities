@@ -38,16 +38,6 @@ if (smoollUtilities === undefined) {
             smoollUtilities.neverCollapseUpgradesMenu();
         },
 
-        toggleCollapsibleButton: function() {
-            if (Game.prefs.sUToggleCollapsibleButton === 0) {
-                Game.prefs.sUToggleCollapsibleButton++;
-                return "+";
-            } else if (Game.prefs.sUToggleCollapsibleButton === 1) {
-                Game.prefs.sUToggleCollapsibleButton--;
-                return "-";
-            }
-        },
-
         // Mod functions
         neverCollapseUpgradesMenu: function() {
             let upgrades = document.querySelector("#upgrades.storeSection.upgradeBox");
@@ -56,6 +46,21 @@ if (smoollUtilities === undefined) {
                 upgrades.style.height = "auto";
             } else if (Game.prefs.sUNeverCollapseUpgradesMenu === 0) {
                 upgrades.removeAttribute("style");
+            }
+        },
+
+        toggleCollapsibleButton: function() {
+            let subsectionDiv = document.querySelector("#sUOptionsMenu");
+            let listingDiv = subsectionDiv.querySelector(".listing");
+
+            if (Game.prefs.sUToggleCollapsibleButton === 0) {
+                Game.prefs.sUToggleCollapsibleButton++;
+                subsectionDiv.removeChild(listingDiv);
+                return "+";
+            } else if (Game.prefs.sUToggleCollapsibleButton === 1) {
+                Game.prefs.sUToggleCollapsibleButton--;
+                subsectionDiv.appendChild(listingDiv);
+                return "-";
             }
         },
 
@@ -91,6 +96,7 @@ if (smoollUtilities === undefined) {
 
                 let subsectionDiv = document.createElement("div");
                 subsectionDiv.className = "subsection";
+                subsectionDiv.id = "sUOptionsMenu";
                 subsectionDiv.style.padding = "0px";
                 subsectionDiv.appendChild(titleDiv);
                 subsectionDiv.appendChild(listingDiv);
