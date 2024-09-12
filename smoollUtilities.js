@@ -27,10 +27,10 @@ if (smoollUtilities === undefined) {
         save: function() {
             const CCPrefs = Game.prefs;
 
-            let ncum = JSON.stringify(Game.prefs.neverCollapseUpgradesMenu);
-            let tcb = JSON.stringify(Game.prefs.toggleCollapsibleButton);
+            Game.prefs.neverCollapseUpgradesMenu = JSON.stringify(Game.prefs.neverCollapseUpgradesMenu);
+            Game.prefs.toggleCollapsibleButton = JSON.stringify(Game.prefs.toggleCollapsibleButton);
 
-            return Game.prefs[ncum, tcb];
+            //return Game.prefs[ncum, tcb];
         },
 
         load: function(str) {
