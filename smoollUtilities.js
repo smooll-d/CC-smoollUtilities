@@ -25,10 +25,14 @@ if (smoollUtilities === undefined) {
         },
 
         save: function() {
-            const CCPrefs = Game.prefs;
+            // const CCPrefs = Game.prefs;
 
-            Game.prefs.neverCollapseUpgradesMenu = JSON.stringify(Game.prefs.neverCollapseUpgradesMenu);
-            Game.prefs.toggleCollapsibleButton = JSON.stringify(Game.prefs.toggleCollapsibleButton);
+            // Game.prefs.neverCollapseUpgradesMenu = JSON.stringify(Game.prefs.neverCollapseUpgradesMenu);
+            // Game.prefs.toggleCollapsibleButton = JSON.stringify(Game.prefs.toggleCollapsibleButton);
+            let prefs = {
+                ncum: JSON.stringify(Game.prefs.neverCollapseUpgradesMenu),
+                tcb: JSON.stringify(Game.prefs.toggleCollapsibleButton)
+            };
 
             return [Game.prefs.neverCollapseUpgradesMenu, Game.prefs.toggleCollapsibleButton];
         },
