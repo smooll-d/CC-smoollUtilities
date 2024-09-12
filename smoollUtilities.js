@@ -61,7 +61,7 @@ if (smoollUtilities === undefined) {
         optionsMenu: function() {
             if (Game.onMenu === "prefs") {
                 if (this.collapseMenu[this.name] === undefined) {
-                    this.collapseMenu[this.name] = 1;
+                    this.collapseMenu[this.name] = 0;
                 }
 
                 // Stolen wholesale from CCSE, which in turn stole it wholesale from Cookie Monster
@@ -76,7 +76,7 @@ if (smoollUtilities === undefined) {
                 span.style.color = "black";
                 span.style.fontSize = "13px";
                 span.style.verticalAlign = "middle";
-                span.textContent = this.collapseMenu[this.name] === 0 ? "+" : "-";
+                span.textContent = this.collapseMenu[this.name] ? "+" : "-";
                 span.addEventListener("click", function() {
                     smoollUtilities.toggleCollapsibleButton();
                     Game.UpdateMenu();
@@ -97,7 +97,7 @@ if (smoollUtilities === undefined) {
                 subsectionDiv.id = "sUOptionsMenu";
                 subsectionDiv.style.padding = "0px";
                 subsectionDiv.appendChild(titleDiv);
-                if (this.collapseMenu[this.name] === 1) {
+                if (!this.collapseMenu[this.name]) {
                     subsectionDiv.appendChild(listingDiv);
                 }
 
