@@ -55,6 +55,10 @@ if (smoollUtilities === undefined) {
             span.style.verticalAlign = "middle";
             span.textContent = this.toggleCollapsibleButton();
 
+            span.addEventListener("click", function() {
+                console.log("closed");
+            });
+
             return span;
         },
 
