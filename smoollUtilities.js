@@ -3,7 +3,6 @@
 //TODO: add fixes for Steam version
 
 var menu = document.getElementById("menu");
-var span = document.createElement("span");
 
 if (smoollUtilities === undefined) {
     var smoollUtilities = {
@@ -37,29 +36,6 @@ if (smoollUtilities === undefined) {
             Game.prefs.sUToggleCollapsibleButton = parseInt(str || 1);
 
             smoollUtilities.neverCollapseUpgradesMenu();
-            smoollUtilities.toggleCollapsibleButton();
-        },
-
-        // Helper functions
-        collapsibleButton: function() {
-            // Stolen wholesale from CCSE, which in turn stole it from Cookie Monster
-            span.style.cursor = "pointer";
-            span.style.display = "inline-block";
-            span.style.height = "14px";
-            span.style.width = "14px";
-            span.style.borderRadius = "7px";
-            span.style.textAlign = "center";
-            span.style.backgroundColor = "#C0C0C0";
-            span.style.color = "black";
-            span.style.fontSize = "13px";
-            span.style.verticalAlign = "middle";
-            span.textContent = Game.prefs.sUToggleCollapsibleButton === 0 ? "+" : "-";
-            span.addEventListener("click", function() {
-                smoollUtilities.toggleCollapsibleButton();
-                Game.UpdateMenu();
-            });
-
-            return span;
         },
 
         toggleCollapsibleButton: function() {
@@ -70,8 +46,6 @@ if (smoollUtilities === undefined) {
                 Game.prefs.sUToggleCollapsibleButton--;
                 return "-";
             }
-
-            return "n";
         },
 
         // Mod functions
@@ -87,27 +61,42 @@ if (smoollUtilities === undefined) {
 
         optionsMenu: function() {
             if (Game.onMenu === "prefs") {
+                // Stolen wholesale from CCSE, which in turn stole it wholesale from Cookie Monster
+                let span = document.createElement("span");
+                span.style.cursor = "pointer";
+                span.style.display = "inline-block";
+                span.style.height = "14px";
+                span.style.width = "14px";
+                span.style.borderRadius = "7px";
+                span.style.textAlign = "center";
+                span.style.backgroundColor = "#C0C0C0";
+                span.style.color = "black";
+                span.style.fontSize = "13px";
+                span.style.verticalAlign = "middle";
+                span.textContent = Game.prefs.sUToggleCollapsibleButton === 0 ? "+" : "-";
+                span.addEventListener("click", function() {
+                    smoollUtilities.toggleCollapsibleButton();
+                    Game.UpdateMenu();
+                });
+
                 let titleDiv = document.createElement("div");
                 titleDiv.className = "title";
                 titleDiv.textContent = `${this.name} `;
-                titleDiv.appendChild(this.collapsibleButton());
-
-                let listingDiv = document.createElement("div");
-                listingDiv.className = "listing";
-                listingDiv.innerHTML = `${Game.WritePrefButton("neverCollapseUpgradesMenu", "ncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.neverCollapseUpgradesMenu();")}
-                                        <label>Keep upgrades menu as if it was always being hovered over</label>`;
-
-                let subsectionDiv = document.createElement("div");
-                subsectionDiv.className = "subsection";
-                subsectionDiv.style.padding = "0px";
-                subsectionDiv.appendChild(titleDiv);
-                subsectionDiv.appendChild(listingDiv);
+                titleDiv.appendChild(span);
 
                 let optionsDiv = document.createElement("div");
                 optionsDiv.className = "block";
                 optionsDiv.style.padding = "0px";
                 optionsDiv.style.margin = "8px 4px";
-                optionsDiv.appendChild(subsectionDiv);
+                optionsDiv.innerHTML = `<div class="subsection" style="padding:0px;">
+                                            <div class="listing">
+                                                ${Game.WritePrefButton("neverCollapseUpgradesMenu", "ncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.neverCollapseUpgradesMenu();")}
+                                                <label>Keep upgrades menu as if it was always being hovered over</label>
+                                            </div>
+                                        </div>`;
+
+                let subsectionDiv = optionsDiv.querySelector(".subsection");
+                optionsDiv.insertBefore(titleDiv, subsectionDiv.firstChild);
 
                 if (menu) {
                     menu.childNodes[3].after(optionsDiv);
