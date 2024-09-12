@@ -6,14 +6,12 @@ var menu = document.getElementById("menu");
 
 if (smoollUtilities === undefined) {
     var smoollUtilities = {
-        // Mod variables
+        // Mod metadata
         name: "smoollUtilities",
-        version: "0.2",
+        version: "0.3",
 
         // Functions required for this (and every other) mod to work
         init: function() {
-            //Game.prefs.neverCollapseUpgradesMenu = 0;
-
             const CCUpdateMenu = Game.UpdateMenu;
 
             Game.UpdateMenu = function() {
