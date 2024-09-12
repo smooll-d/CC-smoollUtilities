@@ -51,9 +51,9 @@ if (smoollUtilities === undefined) {
         },
 
         toggleCollapsibleButton: function() {
-            if (Game.prefs.sUToggleCollapsibleButton === 0) {
+            if (this.collapseMenu[this.name] === 0) {
                 this.collapseMenu[this.name]++;
-            } else if (Game.prefs.sUToggleCollapsibleButton === 1) {
+            } else if (this.collapseMenu[this.name] === 1) {
                 this.collapseMenu[this.name]--;
             }
         },
