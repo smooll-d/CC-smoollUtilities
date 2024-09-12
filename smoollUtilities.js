@@ -25,12 +25,22 @@ if (smoollUtilities === undefined) {
         },
 
         save: function() {
-            let prefs = JSON.stringify(Game.prefs.neverCollapseUpgradesMenu);
-            return prefs;
+            const CCPrefs = Game.prefs;
+
+            let ncum = JSON.stringify(Game.prefs.neverCollapseUpgradesMenu);
+            let tcb = JSON.stringify(Game.prefs.toggleCollapsibleButton);
+
+            return Game.prefs = {
+                CCPrefs,
+                neverCollapseUpgradesMenu: ncum,
+                toggleCollapsibleButton: tcb
+            };
         },
 
         load: function(str) {
             Game.prefs.neverCollapseUpgradesMenu = parseInt(str || 0);
+            Game.prefs.toggleCollapsibleButton = parseInt(str || 0);
+
             smoollUtilities.neverCollapseUpgradesMenu();
         },
 
@@ -48,7 +58,7 @@ if (smoollUtilities === undefined) {
             span.style.color = "black";
             span.style.fontSize = "13px";
             span.style.verticalAlign = "middle";
-            span.textContent = '+';
+            span.textContent = Game.prefs.toggleCollapsibleButton ? "+" : "-";
 
             return span;
         },
