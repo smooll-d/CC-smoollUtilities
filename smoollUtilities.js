@@ -89,7 +89,7 @@ if (smoollUtilities === undefined) {
             span.style.verticalAlign = "middle";
             span.textContent = this.collapseMenu[title] ? "+" : "-";
             span.addEventListener("click", function() {
-                smoollUtilities.toggleCollapsibleButton(smoollUtilities.name);
+                smoollUtilities.toggleCollapsibleButton(title);
                 Game.UpdateMenu();
             });
 
