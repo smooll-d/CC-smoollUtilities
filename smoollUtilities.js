@@ -51,7 +51,7 @@ if (smoollUtilities === undefined) {
             }
 
             smoollUtilities.toggleNeverCollapseUpgradesMenu();
-            smoollUtilities.toggleCollapsibleButton(smoollUtilities.name);
+            //smoollUtilities.toggleCollapsibleButton(smoollUtilities.name);
         },
 
         // Mod functions
