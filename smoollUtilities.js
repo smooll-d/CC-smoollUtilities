@@ -26,14 +26,14 @@ if (smoollUtilities === undefined) {
         },
 
         save: function() {
-            //if (!this.collapseMenu) {
-            //    return
-            //}
+            if (!this.collapseMenu) {
+                return
+            }
 
             let ncum = JSON.stringify(Game.prefs.sUNeverCollapseUpgradesMenu);
-            //let collapseMenu = JSON.stringify(this.collapseMenu);
+            let collapseMenu = JSON.stringify(this.collapseMenu);
 
-            //window.localStorage.setItem(this.localSUcollapseMenu, collapseMenu);
+            window.localStorage.setItem(this.localSUcollapseMenu, collapseMenu);
 
             return ncum;
         },
@@ -41,7 +41,7 @@ if (smoollUtilities === undefined) {
         load: function(str) {
             Game.prefs.sUNeverCollapseUpgradesMenu = parseInt(str || 0);
 
-            //this.collapseMenu = window.localStorage.getItem(this.localSUcollapseMenu);
+            this.collapseMenu = JSON.parse(window.localStorage.getItem(this.localSUcollapseMenu));
 
             smoollUtilities.toggleNeverCollapseUpgradesMenu();
         },
