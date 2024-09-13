@@ -41,7 +41,12 @@ if (smoollUtilities === undefined) {
         load: function(str) {
             Game.prefs.sUNeverCollapseUpgradesMenu = parseInt(str || 0);
 
-            this.collapseMenu = JSON.parse(window.localStorage.getItem(smoollUtilities.localSUCollapseMenu));
+            const collapseMenuData = window.localStorage.getItem(smoollUtilities.localSUCollapseMenu);
+            if (collapseMenuData) {
+                this.collapseMenu = JSON.parse(collapseMenuData);
+            } else {
+                this.collapseMenu = {};
+            }
 
             smoollUtilities.toggleNeverCollapseUpgradesMenu();
             smoollUtilities.toggleCollapsibleButton(smoollUtilities.name);
