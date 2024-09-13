@@ -44,7 +44,7 @@ if (smoollUtilities === undefined) {
             this.collapseMenu = JSON.parse(window.localStorage.getItem(smoollUtilities.localSUCollapseMenu));
 
             smoollUtilities.toggleNeverCollapseUpgradesMenu();
-            smoollUtilities.toggleCollapsibleButton();
+            smoollUtilities.toggleCollapsibleButton(smoollUtilities.name);
         },
 
         // Mod functions
