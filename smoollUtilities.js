@@ -175,6 +175,7 @@ if (smoollUtilities === undefined) {
                                                 <div class="listing">
                                                     If you've encountered a bug, create an 
                                                     <a href="https://github.com/smooll-d/CC-smoollUtilities/issues>issue.</a>
+                                                </div>
                                             </div>
                                             <div class="subsection">
                                                 <div class="title">
