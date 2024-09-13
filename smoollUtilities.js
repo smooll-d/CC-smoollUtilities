@@ -192,7 +192,7 @@ if (smoollUtilities === undefined) {
                                             <div class="subsection"></div>`;
 
                 if (menu) {
-                    let selectableDiv = menu.querySelector(".selectable")[0];
+                    let selectableDiv = menu.getElementsByClassName("selectable")[0];
                     selectableDiv.childNodes[0].after(subsectionDiv);
                 }
             }
