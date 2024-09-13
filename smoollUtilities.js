@@ -163,34 +163,35 @@ if (smoollUtilities === undefined) {
                 let subsectionDiv = document.createElement("div");
                 subsectionDiv.className = "subsection";
                 subsectionDiv.appendChild(titleDiv);
-                subsectionDiv.innerHTML += `<div class="subsection">
-                                                <div class="listing">
-                                                    smoollUtilities is a mod with lots of (not quite right now) simple tools intended to make the game easier.
+                if (!this.collapseMenu[this.name]) {
+                    subsectionDiv.innerHTML += `<div class="subsection">
+                                                    <div class="listing">
+                                                        smoollUtilities is a mod with lots of (not quite right now) simple tools intended to make the game easier.
+                                                    </div>
+                                                    <div class="listing">
+                                                        smoollUtilities is written and maintained by smooll (
+                                                        <a href="https://github.com/smooll-d/CC-smoollUtilities" target="_blank">GitHub</a>
+                                                        )
+                                                    </div>
+                                                    <div class="listing">
+                                                        If you've encountered a bug, create an 
+                                                        <a href="https://github.com/smooll-d/CC-smoollUtilities/issues">issue.</a>
+                                                    </div>
                                                 </div>
-                                                <div class="listing">
-                                                    smoollUtilities is written and maintained by smooll (
-                                                    <a href="https://github.com/smooll-d/CC-smoollUtilities" target="_blank">GitHub</a>
-                                                    )
+                                                <div class="subsection">
+                                                    <div class="title">
+                                                        smoollUtilities Version History
+                                                    </div>
                                                 </div>
-                                                <div class="listing">
-                                                    If you've encountered a bug, create an 
-                                                    <a href="https://github.com/smooll-d/CC-smoollUtilities/issues">issue.</a>
-                                                </div>
-                                            </div>
-                                            <div class="subsection">
-                                                <div class="title">
-                                                    smoollUtilities Version History
-                                                </div>
-                                            </div>
-                                            <div class="subsection update">
-                                                <div class="title">
-                                                    13/09/2024 - Initial Release
-                                                </div>
-                                                <div class="listing">
-                                                    • Added "Never Collapse Upgrades Menu" button which does what it says it does.
-                                                </div>
-                                            </div>
-                                            <div class="subsection"></div>`;
+                                                <div class="subsection update">
+                                                    <div class="title">
+                                                        13/09/2024 - Initial Release
+                                                    </div>
+                                                    <div class="listing">
+                                                        • Added "Never Collapse Upgrades Menu" button which does what it says it does.
+                                                    </div>
+                                                </div>`;
+                }
 
                 if (menu) {
                     let selectableDiv = menu.getElementsByClassName("selectable")[0];
