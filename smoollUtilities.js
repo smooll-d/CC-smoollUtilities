@@ -19,6 +19,7 @@ if (smoollUtilities === undefined) {
 
                 smoollUtilities.optionsMenu();
                 smoollUtilities.statsMenu();
+                smoollUtilities.infoMenu();
             };
 
             Game.Notify(this.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5], 3);
