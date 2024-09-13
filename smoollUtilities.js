@@ -43,9 +43,9 @@ if (smoollUtilities === undefined) {
 
             const collapseMenuData = window.localStorage.getItem(smoollUtilities.localSUCollapseMenu);
             if (collapseMenuData) {
-                this.collapseMenu = JSON.parse(collapseMenuData);
+                smoollUtilities.collapseMenu = JSON.parse(collapseMenuData);
             } else {
-                this.collapseMenu = {};
+                smoollUtilities.collapseMenu = {};
             }
 
             smoollUtilities.toggleNeverCollapseUpgradesMenu();
