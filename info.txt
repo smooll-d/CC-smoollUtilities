@@ -3,7 +3,7 @@
 	"Description": "Mod with lots of utilities that will help you playing the game.",
 	"Author": "smooll",
 	"ID": "smoollUtilities",
-	"ModVersion": 0.3,
+	"ModVersion": 0.r,
 	"GameVersion": 2.052,
 	"Date": "08/09/2024",
 	"Dependencies": [],

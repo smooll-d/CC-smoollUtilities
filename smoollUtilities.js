@@ -1,4 +1,3 @@
-//TODO: save collapsible button state
 //TODO: add version history to "Info" menu (which I need the collapsible button for)
 
 var menu = document.getElementById("menu");
@@ -7,7 +6,7 @@ if (smoollUtilities === undefined) {
     var smoollUtilities = {
         // Mod metadata
         name: "smoollUtilities",
-        version: "0.3",
+        version: "0.4",
         collapseMenu: {},
         localSUCollapseMenu: "sUCollapseMenu",
 
@@ -44,14 +43,11 @@ if (smoollUtilities === undefined) {
             const collapseMenuData = window.localStorage.getItem(smoollUtilities.localSUCollapseMenu);
             if (collapseMenuData) {
                 smoollUtilities.collapseMenu = JSON.parse(collapseMenuData);
-                console.log("Successfully loaded collapseMenu!")
             } else {
                 smoollUtilities.collapseMenu = {};
-                console.log("Failed to load collapseMenu from localStorage. Defaulting to empty one.");
             }
 
             smoollUtilities.toggleNeverCollapseUpgradesMenu();
-            //smoollUtilities.toggleCollapsibleButton(smoollUtilities.name);
         },
 
         // Mod functions
@@ -73,7 +69,11 @@ if (smoollUtilities === undefined) {
             }
         },
 
-        createCollapsibleButton: function() {
+        createCollapsibleButton: function(title) {
+            if (this.collapseMenu[title] === undefined) {
+                this.collapseMenu[title] = 0;
+            }
+
             // Stolen wholesale from CCSE, which in turn stole it wholesale from Cookie Monster
             let span = document.createElement("span");
             span.style.cursor = "pointer";
@@ -86,7 +86,7 @@ if (smoollUtilities === undefined) {
             span.style.color = "black";
             span.style.fontSize = "13px";
             span.style.verticalAlign = "middle";
-            span.textContent = this.collapseMenu[this.name] ? "+" : "-";
+            span.textContent = this.collapseMenu[title] ? "+" : "-";
             span.addEventListener("click", function() {
                 smoollUtilities.toggleCollapsibleButton(smoollUtilities.name);
                 Game.UpdateMenu();
@@ -97,11 +97,7 @@ if (smoollUtilities === undefined) {
 
         optionsMenu: function() {
             if (Game.onMenu === "prefs") {
-                if (this.collapseMenu[this.name] === undefined) {
-                    this.collapseMenu[this.name] = 0;
-                }
-
-                let span = this.createCollapsibleButton();
+                let span = this.createCollapsibleButton(this.name);
 
                 let titleDiv = document.createElement("div");
                 titleDiv.className = "title";
@@ -147,6 +143,16 @@ if (smoollUtilities === undefined) {
                     let menuNode = document.getElementsByClassName("subsection")[0];
                     menuNode.childNodes[3].after(div);
                 }
+            }
+        },
+
+        infoMenu: function() {
+            if (Game.onMenu === "log") {
+                if (this.collapseMenu[this.name] === undefined) {
+                    this.collapseMenu[this.name] = 0;
+                }
+
+                let span = this.createCollapsibleButton(this.name);
             }
         }
     };
