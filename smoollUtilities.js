@@ -44,8 +44,10 @@ if (smoollUtilities === undefined) {
             const collapseMenuData = window.localStorage.getItem(smoollUtilities.localSUCollapseMenu);
             if (collapseMenuData) {
                 smoollUtilities.collapseMenu = JSON.parse(collapseMenuData);
+                console.log("Successfully loaded collapseMenu!")
             } else {
                 smoollUtilities.collapseMenu = {};
+                console.log("Failed to load collapseMenu from localStorage. Defaulting to empty one.");
             }
 
             smoollUtilities.toggleNeverCollapseUpgradesMenu();
