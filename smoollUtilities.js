@@ -9,7 +9,7 @@ if (smoollUtilities === undefined) {
         name: "smoollUtilities",
         version: "0.3",
         collapseMenu: {},
-        localSUcollapseMenu: "sUCollapseMenu",
+        localSUCollapseMenu: "sUCollapseMenu",
 
         // Functions required for this (and every other) mod to work
         init: function() {
@@ -26,14 +26,14 @@ if (smoollUtilities === undefined) {
         },
 
         save: function() {
-            if (!this.collapseMenu) {
+            if (!smoollUtilities.collapseMenu) {
                 return
             }
 
             let ncum = JSON.stringify(Game.prefs.sUNeverCollapseUpgradesMenu);
-            let collapseMenu = JSON.stringify(this.collapseMenu);
+            let collapseMenu = JSON.stringify(smoollUtilities.collapseMenu);
 
-            window.localStorage.setItem(this.localSUcollapseMenu, collapseMenu);
+            window.localStorage.setItem(smoollUtilities.localSUCollapseMenu, collapseMenu);
 
             return ncum;
         },
@@ -41,9 +41,10 @@ if (smoollUtilities === undefined) {
         load: function(str) {
             Game.prefs.sUNeverCollapseUpgradesMenu = parseInt(str || 0);
 
-            this.collapseMenu = JSON.parse(window.localStorage.getItem(this.localSUcollapseMenu));
+            this.collapseMenu = JSON.parse(window.localStorage.getItem(smoollUtilities.localSUCollapseMenu));
 
             smoollUtilities.toggleNeverCollapseUpgradesMenu();
+            smoollUtilities.toggleCollapsibleButton();
         },
 
         // Mod functions
