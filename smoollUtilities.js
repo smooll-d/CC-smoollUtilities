@@ -6,7 +6,7 @@ if (smoollUtilities === undefined) {
     var smoollUtilities = {
         // Mod metadata
         name: "smoollUtilities",
-        version: "0.4",
+        version: "1.0",
 
         // States
         collapseMenu: {},
@@ -30,7 +30,7 @@ if (smoollUtilities === undefined) {
                 smoollUtilities.infoMenu();
             };
 
-            Game.Notify(this.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5], 3);
+            Game.Notify(this.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5, "https://smooll-d.github.io/CC-smoollUtilities/icon.png"], 3);
         },
 
         save: function() {
@@ -171,16 +171,21 @@ if (smoollUtilities === undefined) {
                 let updateLog = document.createElement("div");
                 updateLog.innerHTML += `<div class="subsection">
                                             <div class="listing">
-                                                smoollUtilities is a mod with lots of (not quite right now) simple tools intended to make the game easier.
+                                                smoollUtilities is a mod with lots (not quite right now) of QoL (Quality of Life) changes. All of which are toggleable and are not forced upon you.
                                             </div>
                                             <div class="listing">
-                                                smoollUtilities is written and maintained by smooll (
-                                                <a href="https://github.com/smooll-d/CC-smoollUtilities" target="_blank">GitHub</a>
-                                                )
+                                                It supports both the web and Steam versions of Cookie Clicker.
+                                            </div>
+                                            <div class="listing">
+                                                smoollUtilities is written and maintained by 
+                                                <a href="https://github.com/smooll-d" target="_blank">smooll</a>.
                                             </div>
                                             <div class="listing">
                                                 If you've encountered a bug, create an 
-                                                <a href="https://github.com/smooll-d/CC-smoollUtilities/issues" target="_blank">issue.</a>
+                                                <a href="https://github.com/smooll-d/CC-smoollUtilities/issues" target="_blank">issue</a>.
+                                            </div>
+                                            <div class="listing warning">
+                                                Warning: Even though smoollUtilities does not use the CCSE framework, if you want to use it, please be sure to enable it after CCSE. Something in CCSE <small>(that I don't yet understand)</small> is blocking smoollUtilities from injecting it's own HTML into the UpdateMenu() function. In simpler terms, if smoollUtilities is loaded before CCSE, CCSE will break smoollUtilities and you won't be able to play Cookie Clicker. I will try and fix this but for now, we'll have to live with CCSE superiority.
                                             </div>
                                         </div>
                                         <div class="subsection">
@@ -190,7 +195,7 @@ if (smoollUtilities === undefined) {
                                         </div>
                                         <div class="subsection update">
                                             <div class="title">
-                                                13/09/2024 - Initial Release
+                                                13/09/2024 | Initial Release - v1.0
                                             </div>
                                             <div class="listing">
                                                 • Added "Never Collapse Upgrades Menu" button which does what it says it does.
