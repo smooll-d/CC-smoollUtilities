@@ -7,7 +7,15 @@ if (smoollUtilities === undefined) {
         // Mod metadata
         name: "smoollUtilities",
         version: "0.4",
+
+        // States
         collapseMenu: {},
+
+        // "collapseMenu" state names
+        cMPrefs: "prefs",
+        cMLog: "log",
+
+        // localStorage
         localSUCollapseMenu: "sUCollapseMenu",
 
         // Functions required for this (and every other) mod to work
@@ -26,14 +34,14 @@ if (smoollUtilities === undefined) {
         },
 
         save: function() {
-            if (!smoollUtilities.collapseMenu) {
+            if (!this.collapseMenu) {
                 return
             }
 
             let ncum = JSON.stringify(Game.prefs.sUNeverCollapseUpgradesMenu);
-            let collapseMenu = JSON.stringify(smoollUtilities.collapseMenu);
+            let collapseMenu = JSON.stringify(this.collapseMenu);
 
-            window.localStorage.setItem(smoollUtilities.localSUCollapseMenu, collapseMenu);
+            window.localStorage.setItem(this.localSUCollapseMenu, collapseMenu);
 
             return ncum;
         },
@@ -41,14 +49,14 @@ if (smoollUtilities === undefined) {
         load: function(str) {
             Game.prefs.sUNeverCollapseUpgradesMenu = parseInt(str || 0);
 
-            const collapseMenuData = window.localStorage.getItem(smoollUtilities.localSUCollapseMenu);
+            const collapseMenuData = window.localStorage.getItem(this.localSUCollapseMenu);
             if (collapseMenuData) {
-                smoollUtilities.collapseMenu = JSON.parse(collapseMenuData);
+                this.collapseMenu = JSON.parse(collapseMenuData);
             } else {
-                smoollUtilities.collapseMenu = {};
+                this.collapseMenu = {};
             }
 
-            smoollUtilities.toggleNeverCollapseUpgradesMenu();
+            this.toggleNeverCollapseUpgradesMenu();
         },
 
         // Mod functions
@@ -98,7 +106,7 @@ if (smoollUtilities === undefined) {
 
         optionsMenu: function() {
             if (Game.onMenu === "prefs") {
-                let span = this.createCollapsibleButton(this.name);
+                let span = this.createCollapsibleButton(this.cMPrefs);
 
                 let titleDiv = document.createElement("div");
                 titleDiv.className = "title";
@@ -114,7 +122,7 @@ if (smoollUtilities === undefined) {
                 subsectionDiv.className = "subsection";
                 subsectionDiv.style.padding = "0px";
                 subsectionDiv.appendChild(titleDiv);
-                if (!this.collapseMenu[this.name]) {
+                if (!this.collapseMenu[this.cMPrefs]) {
                     subsectionDiv.appendChild(listingDiv);
                 }
 
@@ -149,11 +157,7 @@ if (smoollUtilities === undefined) {
 
         infoMenu: function() {
             if (Game.onMenu === "log") {
-                if (this.collapseMenu[this.name] === undefined) {
-                    this.collapseMenu[this.name] = 0;
-                }
-
-                let span = this.createCollapsibleButton(this.name);
+                let span = this.createCollapsibleButton(this.cMLog);
 
                 let titleDiv = document.createElement("div");
                 titleDiv.className = "title";
@@ -163,7 +167,7 @@ if (smoollUtilities === undefined) {
                 let subsectionDiv = document.createElement("div");
                 subsectionDiv.className = "subsection";
                 subsectionDiv.appendChild(titleDiv);
-                if (!this.collapseMenu[this.name]) {
+                if (!this.collapseMenu[this.cMLog]) {
                     subsectionDiv.innerHTML += `<div class="subsection">
                                                     <div class="listing">
                                                         smoollUtilities is a mod with lots of (not quite right now) simple tools intended to make the game easier.
