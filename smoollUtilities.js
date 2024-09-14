@@ -1,4 +1,4 @@
-//TODO: add version history to "Info" menu (which I need the collapsible button for)
+//TODO: add scaling (steam version only)
 
 var menu = document.getElementById("menu");
 

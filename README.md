@@ -10,7 +10,7 @@ It supports both the web and Steam versions of Cookie Clicker.
 ## Features
 - `Never Collapse Upgrades Button` - Keep upgrades menu as if it was always being hovered over
 
-Right now that's it but with time, more will come. I already have some new ideas.
+Right now that's it but with time, more will come. I already have some new ideas. You can actually see what will be added in future versions if you go in the code of smoollUtilities and check the beginning of the file. There is a comment or multiple comments with the prefix `//TODO:` which will tell you what will be included in future versions of smoollUtilities.
 
 ## Usage
 
