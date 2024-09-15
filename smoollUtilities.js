@@ -110,10 +110,10 @@ if (smoollUtilities === undefined) {
             let scalingValue = Math.round(l("sUScaling").value);
 
             l("sUScalingRightText").innerHTML = `${scalingValue}%`;
-            document.body.transform = `scale(${window.screen.availHeight / (scalingValue / 100)})`;
-            document.body.transform["-o-transform"] = `scale(${window.screen.availHeight / (scalingValue / 100)})`;
-            document.body.transform["-webkit-transform"] = `scale(${window.screen.availHeight / (scalingValue / 100)})`;
-            document.body.transform["-moz-transform"] = `scale(${window.screen.availHeight / (scalingValue / 100)})`;
+            document.body.style.transform = `scale(${window.screen.availHeight / (scalingValue / 100)})`;
+            document.body.style.transform["-o-transform"] = `scale(${window.screen.availHeight / (scalingValue / 100)})`;
+            document.body.style.transform["-webkit-transform"] = `scale(${window.screen.availHeight / (scalingValue / 100)})`;
+            document.body.style.transform["-moz-transform"] = `scale(${window.screen.availHeight / (scalingValue / 100)})`;
 
             this.scale = scalingValue;
         },
