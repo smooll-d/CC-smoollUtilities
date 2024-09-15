@@ -128,8 +128,8 @@ if (smoollUtilities === undefined) {
                 scalingSliderDiv.innerHTML = `${Game.WriteSlider("sUScaling", "Scale", "100%", function() { return window.devicePixelRatio * 100}, "smoollUtilities.changeScale();")}
                                               <label>Change scale of window</label>`;
 
-                scaling.min = "25";
-                scaling.max = "500";
+                scaling.setAttribute("min", 25);
+                scaling.setAttribute("max", 500);
 
                 let subsectionDiv = document.createElement("div");
                 subsectionDiv.className = "subsection";
