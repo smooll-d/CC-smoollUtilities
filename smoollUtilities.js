@@ -108,13 +108,14 @@ if (smoollUtilities === undefined) {
 
         changeScale: function() {
             let scalingValue = Math.round(l("sUScaling").value);
-            let scalingTransform = scalingValue / 100;
+            let scalingTransformX = window.screen.availWidth / (scalingValue / 100);
+            let scalingTransformY = window.screen.availHeight / (scalingValue / 100);
 
             l("sUScalingRightText").innerHTML = `${scalingValue}%`;
-            document.body.style.transform = `scale(${scalingTransform}, ${scalingTransform})`;
-            document.body.style.transform["-o-transform"] = `scale(${scalingTransform}, ${scalingTransform})`;
-            document.body.style.transform["-webkit-transform"] = `scale(${scalingTransform}, ${scalingTransform})`;
-            document.body.style.transform["-moz-transform"] = `scale(${scalingTransform}, ${scalingTransform})`;
+            document.body.style.transform = `scale(${scalingTransformX}, ${scalingTransformY})`;
+            document.body.style.transform["-o-transform"] = `scale(${scalingTransformX}, ${scalingTransformY})`;
+            document.body.style.transform["-webkit-transform"] = `scale(${scalingTransformX}, ${scalingTransformY})`;
+            document.body.style.transform["-moz-transform"] = `scale(${scalingTransformX}, ${scalingTransformY})`;
 
             this.scale = scalingValue;
         },
@@ -149,10 +150,10 @@ if (smoollUtilities === undefined) {
                 subsectionDiv.appendChild(titleDiv);
                 if (!this.collapseMenu[this.cMPrefs]) {
                     subsectionDiv.appendChild(neverCollapseUpgradesMenuDiv);
-                    //subsectionDiv.appendChild(scalingSliderDiv);
-                    if (App) {
-                        subsectionDiv.appendChild(scalingSliderDiv);
-                    }
+                    subsectionDiv.appendChild(scalingSliderDiv);
+                    //if (App) {
+                    //    subsectionDiv.appendChild(scalingSliderDiv);
+                    //}
                 }
 
                 let optionsDiv = document.createElement("div");
