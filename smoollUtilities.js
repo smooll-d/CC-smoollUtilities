@@ -1,7 +1,6 @@
 //TODO: add scaling (steam version only)
 
 var menu = document.getElementById("menu");
-var scaling = document.getElementById("sUScaling");
 
 if (smoollUtilities === undefined) {
     var smoollUtilities = {
@@ -127,6 +126,8 @@ if (smoollUtilities === undefined) {
                 scalingSliderDiv.className = "listing";
                 scalingSliderDiv.innerHTML = `${Game.WriteSlider("sUScaling", "Scale", "100%", function() { return window.devicePixelRatio * 100}, "smoollUtilities.changeScale();")}
                                               <label>Change scale of window</label>`;
+
+                let scaling = scalingSliderDiv.querySelector("#sUScaling");
 
                 scaling.setAttribute("min", 25);
                 scaling.setAttribute("max", 500);
