@@ -150,7 +150,7 @@ if (smoollUtilities === undefined) {
                 subsectionDiv.appendChild(titleDiv);
                 if (!this.collapseMenu[this.cMPrefs]) {
                     subsectionDiv.appendChild(neverCollapseUpgradesMenuDiv);
-                    subsectionDiv.appendChild(scalingSliderDiv);
+                    //subsectionDiv.appendChild(scalingSliderDiv);
                     //if (App) {
                     //    subsectionDiv.appendChild(scalingSliderDiv);
                     //}
