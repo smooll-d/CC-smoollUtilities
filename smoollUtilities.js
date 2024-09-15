@@ -18,6 +18,8 @@ if (smoollUtilities === undefined) {
         // localStorage
         localSUCollapseMenu: "sUCollapseMenu",
 
+        scale: window.devicePixelRatio * 100,
+
         // Functions required for this (and every other) mod to work
         init: function() {
             const CCUpdateMenu = Game.UpdateMenu;
@@ -108,7 +110,9 @@ if (smoollUtilities === undefined) {
             let scalingValue = Math.round(l("sUScaling").value);
 
             l("sUScalingRightText").innerHTML = `${scalingValue}%`;
-            window.devicePixelRatio = scalingValue / 100;
+            document.body.style.zoom = scalingValue / 100;
+
+            this.scale = scalingValue;
         },
 
         optionsMenu: function() {
@@ -127,7 +131,7 @@ if (smoollUtilities === undefined) {
 
                 let scalingSliderDiv = document.createElement("div");
                 scalingSliderDiv.className = "listing";
-                scalingSliderDiv.innerHTML = `${Game.WriteSlider("sUScaling", "Scale", `[$]%`, function() { return window.devicePixelRatio * 100}, "smoollUtilities.changeScale();")}
+                scalingSliderDiv.innerHTML = `${Game.WriteSlider("sUScaling", "Scale", `[$]%`, function() { return this.scale}, "smoollUtilities.changeScale();")}
                                               <label>Change scale of window</label>`;
 
                 let scaling = scalingSliderDiv.querySelector("#sUScaling");
