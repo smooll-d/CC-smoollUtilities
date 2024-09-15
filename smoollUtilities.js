@@ -105,7 +105,7 @@ if (smoollUtilities === undefined) {
         },
 
         changeScale: function() {
-            console.log(Math.round(l("sUScaling").value));
+            l("sUScaling").innerHTML = Math.round(l("sUScaling").value);
         },
 
         optionsMenu: function() {
@@ -126,6 +126,9 @@ if (smoollUtilities === undefined) {
                 scalingSliderDiv.className = "listing";
                 scalingSliderDiv.innerHTML = `${Game.WriteSlider("sUScaling", "Scale", "100%", function() { return window.devicePixelRatio * 100}, "smoollUtilities.changeScale();")}
                                               <label>Change scale of window</label>`;
+
+                l("sUScaling").min = "25";
+                l("sUScaling").max = "500";
 
                 let subsectionDiv = document.createElement("div");
                 subsectionDiv.className = "subsection";
