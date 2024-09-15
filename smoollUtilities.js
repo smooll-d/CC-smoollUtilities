@@ -104,6 +104,10 @@ if (smoollUtilities === undefined) {
             return span;
         },
 
+        changeScale: function() {
+            console.log(Math.round(l("sUScaling").value));
+        },
+
         optionsMenu: function() {
             if (Game.onMenu === "prefs") {
                 let span = this.createCollapsibleButton(this.cMPrefs);
@@ -113,17 +117,25 @@ if (smoollUtilities === undefined) {
                 titleDiv.textContent = `${this.name} `;
                 titleDiv.appendChild(span);
 
-                let listingDiv = document.createElement("div");
-                listingDiv.className = "listing";
-                listingDiv.innerHTML = `${Game.WritePrefButton("sUNeverCollapseUpgradesMenu", "ncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.toggleNeverCollapseUpgradesMenu();")}
+                let neverCollapseUpgradesMenuDiv = document.createElement("div");
+                neverCollapseUpgradesMenuDiv.className = "listing";
+                neverCollapseUpgradesMenuDiv.innerHTML = `${Game.WritePrefButton("sUNeverCollapseUpgradesMenu", "ncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.toggleNeverCollapseUpgradesMenu();")}
                                         <label>Keep upgrades menu as if it was always being hovered over</label>`;
+
+                let scalingSliderDiv = document.createElement("div");
+                scalingSliderDiv.className = "listing";
+                scalingSliderDiv.innerHTML = `${Game.WriteSlider("sUScaling", "Scale", "100%", "100%", "smoollUtilities.changeScale();")}
+                                              <label>Change scale of window</label>`;
 
                 let subsectionDiv = document.createElement("div");
                 subsectionDiv.className = "subsection";
                 subsectionDiv.style.padding = "0px";
                 subsectionDiv.appendChild(titleDiv);
                 if (!this.collapseMenu[this.cMPrefs]) {
-                    subsectionDiv.appendChild(listingDiv);
+                    subsectionDiv.appendChild(neverCollapseUpgradesMenuDiv);
+                    if (App) {
+                        subsectionDiv.appendChild(scalingSliderDiv);
+                    }
                 }
 
                 let optionsDiv = document.createElement("div");
