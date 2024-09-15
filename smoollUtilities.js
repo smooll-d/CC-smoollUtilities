@@ -120,15 +120,12 @@ if (smoollUtilities === undefined) {
                 let neverCollapseUpgradesMenuDiv = document.createElement("div");
                 neverCollapseUpgradesMenuDiv.className = "listing";
                 neverCollapseUpgradesMenuDiv.innerHTML = `${Game.WritePrefButton("sUNeverCollapseUpgradesMenu", "ncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.toggleNeverCollapseUpgradesMenu();")}
-                                        <label>Keep upgrades menu as if it was always being hovered over</label>`;
+                                                          <label>Keep upgrades menu as if it was always being hovered over</label>`;
 
                 let scalingSliderDiv = document.createElement("div");
                 scalingSliderDiv.className = "listing";
                 scalingSliderDiv.innerHTML = `${Game.WriteSlider("sUScaling", "Scale", "100%", function() { return window.devicePixelRatio * 100}, "smoollUtilities.changeScale();")}
                                               <label>Change scale of window</label>`;
-
-                l("sUScaling").min = "25";
-                l("sUScaling").max = "500";
 
                 let subsectionDiv = document.createElement("div");
                 subsectionDiv.className = "subsection";
@@ -138,6 +135,9 @@ if (smoollUtilities === undefined) {
                     subsectionDiv.appendChild(neverCollapseUpgradesMenuDiv);
                     if (App) {
                         subsectionDiv.appendChild(scalingSliderDiv);
+
+                        l("sUScaling").min = "25";
+                        l("sUScaling").max = "500";
                     }
                 }
 
