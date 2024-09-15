@@ -105,7 +105,7 @@ if (smoollUtilities === undefined) {
         },
 
         changeScale: function() {
-            l("sUScalingRightText").innerHTML = Math.round(l("sUScaling").value);
+            l("sUScalingRightText").innerHTML = `${Math.round(l("sUScaling").value)}%`;
         },
 
         optionsMenu: function() {
@@ -124,7 +124,7 @@ if (smoollUtilities === undefined) {
 
                 let scalingSliderDiv = document.createElement("div");
                 scalingSliderDiv.className = "listing";
-                scalingSliderDiv.innerHTML = `${Game.WriteSlider("sUScaling", "Scale", "100%", function() { return window.devicePixelRatio * 100}, "smoollUtilities.changeScale();")}
+                scalingSliderDiv.innerHTML = `${Game.WriteSlider("sUScaling", "Scale", `[$]%`, function() { return window.devicePixelRatio * 100}, "smoollUtilities.changeScale();")}
                                               <label>Change scale of window</label>`;
 
                 let scaling = scalingSliderDiv.querySelector("#sUScaling");
