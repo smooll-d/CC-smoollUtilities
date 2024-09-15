@@ -105,7 +105,10 @@ if (smoollUtilities === undefined) {
         },
 
         changeScale: function() {
-            l("sUScalingRightText").innerHTML = `${Math.round(l("sUScaling").value)}%`;
+            let scalingValue = Math.round(l("sUScaling").value);
+
+            l("sUScalingRightText").innerHTML = `${scalingValue}%`;
+            window.devicePixelRatio = scalingValue;
         },
 
         optionsMenu: function() {
