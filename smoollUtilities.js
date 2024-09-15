@@ -108,12 +108,13 @@ if (smoollUtilities === undefined) {
 
         changeScale: function() {
             let scalingValue = Math.round(l("sUScaling").value);
+            let scalingTransform = scalingValue / 100;
 
             l("sUScalingRightText").innerHTML = `${scalingValue}%`;
-            document.body.style.transform = `scale(${window.screen.availHeight / (scalingValue / 100)})`;
-            document.body.style.transform["-o-transform"] = `scale(${window.screen.availHeight / (scalingValue / 100)})`;
-            document.body.style.transform["-webkit-transform"] = `scale(${window.screen.availHeight / (scalingValue / 100)})`;
-            document.body.style.transform["-moz-transform"] = `scale(${window.screen.availHeight / (scalingValue / 100)})`;
+            document.body.style.transform = `scale(${scalingTransform}, ${scalingTransform})`;
+            document.body.style.transform["-o-transform"] = `scale(${scalingTransform}, ${scalingTransform})`;
+            document.body.style.transform["-webkit-transform"] = `scale(${scalingTransform}, ${scalingTransform})`;
+            document.body.style.transform["-moz-transform"] = `scale(${scalingTransform}, ${scalingTransform})`;
 
             this.scale = scalingValue;
         },
