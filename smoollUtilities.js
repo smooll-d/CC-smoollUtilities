@@ -105,7 +105,7 @@ if (smoollUtilities === undefined) {
         },
 
         changeScale: function() {
-            l("sUScaling").innerHTML = Math.round(l("sUScaling").value);
+            l("sUScalingRightText").innerHTML = Math.round(l("sUScaling").value);
         },
 
         optionsMenu: function() {
@@ -138,9 +138,10 @@ if (smoollUtilities === undefined) {
                 subsectionDiv.appendChild(titleDiv);
                 if (!this.collapseMenu[this.cMPrefs]) {
                     subsectionDiv.appendChild(neverCollapseUpgradesMenuDiv);
-                    if (App) {
-                        subsectionDiv.appendChild(scalingSliderDiv);
-                    }
+                    subsectionDiv.appendChild(scalingSliderDiv);
+                    //if (App) {
+                    //    subsectionDiv.appendChild(scalingSliderDiv);
+                    //}
                 }
 
                 let optionsDiv = document.createElement("div");
