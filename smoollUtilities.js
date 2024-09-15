@@ -108,7 +108,7 @@ if (smoollUtilities === undefined) {
             let scalingValue = Math.round(l("sUScaling").value);
 
             l("sUScalingRightText").innerHTML = `${scalingValue}%`;
-            window.devicePixelRatio = scalingValue;
+            window.devicePixelRatio = scalingValue / 100;
         },
 
         optionsMenu: function() {
@@ -141,10 +141,10 @@ if (smoollUtilities === undefined) {
                 subsectionDiv.appendChild(titleDiv);
                 if (!this.collapseMenu[this.cMPrefs]) {
                     subsectionDiv.appendChild(neverCollapseUpgradesMenuDiv);
-                    subsectionDiv.appendChild(scalingSliderDiv);
-                    //if (App) {
-                    //    subsectionDiv.appendChild(scalingSliderDiv);
-                    //}
+                    //subsectionDiv.appendChild(scalingSliderDiv);
+                    if (App) {
+                        subsectionDiv.appendChild(scalingSliderDiv);
+                    }
                 }
 
                 let optionsDiv = document.createElement("div");
