@@ -1,4 +1,7 @@
-//TODO: add scaling (steam version only)
+//TODO: add Cookies per Click
+
+// Things I'd like to do in the future:
+// add scaling (steam version only)
 
 var menu = document.getElementById("menu");
 
@@ -17,8 +20,6 @@ if (smoollUtilities === undefined) {
 
         // localStorage
         localSUCollapseMenu: "sUCollapseMenu",
-
-        scale: window.devicePixelRatio * 100,
 
         // Functions required for this (and every other) mod to work
         init: function() {
@@ -80,6 +81,10 @@ if (smoollUtilities === undefined) {
             }
         },
 
+        toggleCookiesPerClick: function() {
+            console.log("I am now showing cookies per click.");
+        },
+
         createCollapsibleButton: function(title) {
             if (this.collapseMenu[title] === undefined) {
                 this.collapseMenu[title] = 0;
@@ -106,18 +111,6 @@ if (smoollUtilities === undefined) {
             return span;
         },
 
-        changeScale: function() {
-            let scalingValue = Math.round(l("sUScaling").value);
-            let scalingFactor = scalingValue / 100;
-
-            document.body.style.transformOrigin = "0 0";
-            document.body.style.transform = `scale(${scalingFactor})`;
-
-            l("sUScalingRightText").innerHTML = `${scalingValue}%`;
-
-            this.scale = scalingValue;
-        },
-
         optionsMenu: function() {
             if (Game.onMenu === "prefs") {
                 let span = this.createCollapsibleButton(this.cMPrefs);
@@ -129,18 +122,13 @@ if (smoollUtilities === undefined) {
 
                 let neverCollapseUpgradesMenuDiv = document.createElement("div");
                 neverCollapseUpgradesMenuDiv.className = "listing";
-                neverCollapseUpgradesMenuDiv.innerHTML = `${Game.WritePrefButton("sUNeverCollapseUpgradesMenu", "ncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.toggleNeverCollapseUpgradesMenu();")}
+                neverCollapseUpgradesMenuDiv.innerHTML = `${Game.WritePrefButton("sUNeverCollapseUpgradesMenu", "sUncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.toggleNeverCollapseUpgradesMenu();")}
                                                           <label>Keep upgrades menu as if it was always being hovered over</label>`;
 
-                let scalingSliderDiv = document.createElement("div");
-                scalingSliderDiv.className = "listing";
-                scalingSliderDiv.innerHTML = `${Game.WriteSlider("sUScaling", "Scale", `[$]%`, function() { return this.scale}, "smoollUtilities.changeScale();")}
-                                              <label>Change scale of window</label>`;
-
-                let scaling = scalingSliderDiv.querySelector("#sUScaling");
-
-                scaling.setAttribute("min", 25);
-                scaling.setAttribute("max", 500);
+                let cookiesPerClickDiv = document.createElement("div");
+                cookiesPerClickDiv.className = "listing";
+                cookiesPerClickDiv.innerHTML = `${Game.WritePrefButton("sUCookiesPerClick", "sUcpsButton", "Show \"Cookies per Click\"", "Show \"Cookies per Click\"", "smoollUtilities.toggleCookiesPerClick();")}
+                                              <label>Show how many cookies are made per click</label>`;
 
                 let subsectionDiv = document.createElement("div");
                 subsectionDiv.className = "subsection";
@@ -148,10 +136,7 @@ if (smoollUtilities === undefined) {
                 subsectionDiv.appendChild(titleDiv);
                 if (!this.collapseMenu[this.cMPrefs]) {
                     subsectionDiv.appendChild(neverCollapseUpgradesMenuDiv);
-                    subsectionDiv.appendChild(scalingSliderDiv);
-                    //if (App) {
-                    //    subsectionDiv.appendChild(scalingSliderDiv);
-                    //}
+                    subsectionDiv.appendChild(cookiesPerClickDiv);
                 }
 
                 let optionsDiv = document.createElement("div");
