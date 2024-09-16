@@ -151,9 +151,9 @@ if (smoollUtilities === undefined) {
                 if (!this.collapseMenu[this.cMPrefs]) {
                     subsectionDiv.appendChild(neverCollapseUpgradesMenuDiv);
                     //subsectionDiv.appendChild(scalingSliderDiv);
-                    //if (App) {
-                    //    subsectionDiv.appendChild(scalingSliderDiv);
-                    //}
+                    if (App) {
+                        subsectionDiv.appendChild(scalingSliderDiv);
+                    }
                 }
 
                 let optionsDiv = document.createElement("div");
