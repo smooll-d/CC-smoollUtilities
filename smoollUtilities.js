@@ -136,7 +136,7 @@ if (smoollUtilities === undefined) {
                 subsectionDiv.appendChild(titleDiv);
                 if (!this.collapseMenu[this.cMPrefs]) {
                     subsectionDiv.appendChild(neverCollapseUpgradesMenuDiv);
-                    subsectionDiv.appendChild(cookiesPerClickDiv);
+                    //subsectionDiv.appendChild(cookiesPerClickDiv);
                 }
 
                 let optionsDiv = document.createElement("div");
