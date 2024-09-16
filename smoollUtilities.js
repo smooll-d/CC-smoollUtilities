@@ -110,9 +110,16 @@ if (smoollUtilities === undefined) {
             let scalingValue = Math.round(l("sUScaling").value);
             let scalingFactor = scalingValue / 100;
 
-            l("sUScalingRightText").innerHTML = `${scalingValue}%`;
+            let viewportMeta = document.querySelector("meta[name=viewport]");
+            if (!viewportMeta) {
+                viewportMeta = document.createElement("meta");
+                viewportMeta.name = "viewport";
+                document.head.appendChild(viewportMeta);
+            }
 
-            document.body.style.zoom = scalingFactor;
+            viewportMeta.content = `width=device-width, initial-scale=${scalingFactor}, maximum-scale=${scalingFactor}, user-scalable=no`;
+
+            l("sUScalingRightText").innerHTML = `${scalingValue}%`;
 
             this.scale = scalingValue;
         },
