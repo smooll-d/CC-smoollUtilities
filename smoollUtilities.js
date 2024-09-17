@@ -3,7 +3,7 @@
 // Things I'd like to do in the future:
 // add scaling (steam version only)
 
-var menu = document.querySelector("#menu");
+var menu = document.getElementById("menu");
 
 if (smoollUtilities === undefined) {
     var smoollUtilities = {
@@ -87,7 +87,7 @@ if (smoollUtilities === undefined) {
             cookiesPerClickDiv.id = "cookiesPerClick";
             cookiesPerClickDiv.innerHTML = `per click: ${Beautify(Game.mouseCps())}`;
 
-            let cookies = document.querySelector("#cookies");
+            let cookies = document.getElementById("cookies");
 
             if (Game.prefs.sUShowCookiesPerClick === 1) {
                 cookies.childNodes[1].after(cookiesPerClickDiv);
@@ -173,7 +173,7 @@ if (smoollUtilities === undefined) {
                 div.innerHTML = `<b>${this.name}:</b> ${this.version}`;
 
                 if (menu) {
-                    let menuNode = document.querySelector(".subsection")[0];
+                    let menuNode = document.getElementsByClassName("subsection")[0];
                     menuNode.childNodes[3].after(div);
                 }
             }
@@ -231,7 +231,7 @@ if (smoollUtilities === undefined) {
                 }
 
                 if (menu) {
-                    let selectableDiv = menu.querySelector(".selectable")[0];
+                    let selectableDiv = menu.getElementsByClassName("selectable")[0];
                     selectableDiv.childNodes[0].after(subsectionDiv);
                 }
             }
