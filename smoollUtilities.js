@@ -84,10 +84,14 @@ if (smoollUtilities === undefined) {
         },
 
         toggleShowCookiesPerClick: function() {
+            let cookiesPerClickDiv = document.createElement("div");
+            cookiesPerClickDiv.id = "cookiesPerClick";
+            cookiesPerClickDiv.innerHTML = `per click: ${Beautify(Game.mouseCps())}`;
+
             if (Game.prefs.sUShowCookiesPerClick === 1) {
-                console.log("I'm showing cookies per click right now");
+                l("cookies").appendChild(cookiesPerClickDiv);
             } else if (Game.prefs.sUShowCookiesPerClick === 0) {
-                console.log("I'm not showing cookies per click right now");
+                l("cookies").removeChild(cookiesPerClickDiv);
             }
         },
 
@@ -133,7 +137,7 @@ if (smoollUtilities === undefined) {
 
                 let cookiesPerClickDiv = document.createElement("div");
                 cookiesPerClickDiv.className = "listing";
-                cookiesPerClickDiv.innerHTML = `${Game.WritePrefButton("sUCookiesPerClick", "sUcpsButton", "Show Cookies per Click", "Show Cookies per Click", "smoollUtilities.toggleShowCookiesPerClick();")}
+                cookiesPerClickDiv.innerHTML = `${Game.WritePrefButton("sUShowCookiesPerClick", "sUcpsButton", "Show Cookies per Click", "Show Cookies per Click", "smoollUtilities.toggleShowCookiesPerClick();")}
                                                 <label>Show how many cookies are made per click</label>`;
 
                 let subsectionDiv = document.createElement("div");
