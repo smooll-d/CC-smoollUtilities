@@ -85,12 +85,13 @@ if (smoollUtilities === undefined) {
         toggleShowCookiesPerClick: function() {
             let cookiesPerClickDiv = document.createElement("div");
             cookiesPerClickDiv.id = "cookiesPerClick";
+            cookiesPerClickDiv.style.fontSize = "50%";
             cookiesPerClickDiv.innerHTML = `per click: ${Beautify(Game.mouseCps())}`;
 
             let cookies = document.getElementById("cookies");
 
             if (Game.prefs.sUShowCookiesPerClick === 1) {
-                cookies.childNodes[1].after(cookiesPerClickDiv);
+                cookies.innerHTML += cookiesPerClickDiv.innerHTML;
             } else if (Game.prefs.sUShowCookiesPerClick === 0) {
                 cookies.childNodes[1].remove(cookiesPerClickDiv);
             }
