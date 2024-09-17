@@ -51,6 +51,7 @@ if (smoollUtilities === undefined) {
 
         load: function(str) {
             Game.prefs.sUNeverCollapseUpgradesMenu = parseInt(str || 0);
+            Game.prefs.sUShowCookiesPerClick = parseInt(str || 0);
 
             const collapseMenuData = window.localStorage.getItem(this.localSUCollapseMenu);
             if (collapseMenuData) {
@@ -60,6 +61,7 @@ if (smoollUtilities === undefined) {
             }
 
             this.toggleNeverCollapseUpgradesMenu();
+            this.toggleShowCookiesPerClick();
         },
 
         // Mod functions
@@ -81,8 +83,12 @@ if (smoollUtilities === undefined) {
             }
         },
 
-        toggleCookiesPerClick: function() {
-            console.log("I am now showing cookies per click.");
+        toggleShowCookiesPerClick: function() {
+            if (Game.prefs.sUShowCookiesPerClick === 1) {
+                console.log("I'm showing cookies per click right now");
+            } else if (Game.prefs.sUShowCookiesPerClick === 0) {
+                console.log("I'm not showing cookies per click right now");
+            }
         },
 
         createCollapsibleButton: function(title) {
@@ -127,8 +133,8 @@ if (smoollUtilities === undefined) {
 
                 let cookiesPerClickDiv = document.createElement("div");
                 cookiesPerClickDiv.className = "listing";
-                cookiesPerClickDiv.innerHTML = `${Game.WritePrefButton("sUCookiesPerClick", "sUcpsButton", "Show \"Cookies per Click\"", "Show \"Cookies per Click\"", "smoollUtilities.toggleCookiesPerClick();")}
-                                              <label>Show how many cookies are made per click</label>`;
+                cookiesPerClickDiv.innerHTML = `${Game.WritePrefButton("sUCookiesPerClick", "sUcpsButton", "Show Cookies per Click", "Show Cookies per Click", "smoollUtilities.toggleShowCookiesPerClick();")}
+                                                <label>Show how many cookies are made per click</label>`;
 
                 let subsectionDiv = document.createElement("div");
                 subsectionDiv.className = "subsection";
@@ -136,7 +142,7 @@ if (smoollUtilities === undefined) {
                 subsectionDiv.appendChild(titleDiv);
                 if (!this.collapseMenu[this.cMPrefs]) {
                     subsectionDiv.appendChild(neverCollapseUpgradesMenuDiv);
-                    //subsectionDiv.appendChild(cookiesPerClickDiv);
+                    subsectionDiv.appendChild(cookiesPerClickDiv);
                 }
 
                 let optionsDiv = document.createElement("div");
