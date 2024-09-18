@@ -33,6 +33,12 @@ if (smoollUtilities === undefined) {
                 smoollUtilities.infoMenu();
             };
 
+            Game.registerHook("logic", function() {
+                if (Game.prefs.sUShowCookiesPerClick === 1) {
+                    smoollUtilities.toggleShowCookiesPerClick();
+                }
+            });
+
             Game.Notify(this.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5, "https://smooll-d.github.io/CC-smoollUtilities/icon.png"], 3);
         },
 
@@ -83,21 +89,20 @@ if (smoollUtilities === undefined) {
         },
 
         toggleShowCookiesPerClick: function() {
-            let cookiesPerClickDiv = document.createElement("div");
-            cookiesPerClickDiv.id = "cookiesPerClick";
-            cookiesPerClickDiv.style.fontSize = "50%";
-            cookiesPerClickDiv.innerHTML = `per click: ${Beautify(Game.mouseCps())}`;
-
             let cookies = document.getElementById("cookies");
 
-            //if (Game.prefs.sUShowCookiesPerClick === 1) {
-            //    cookies.innerHTML += cookiesPerClickDiv.innerHTML;
-            //} else if (Game.prefs.sUShowCookiesPerClick === 0) {
-            //    cookies.innerHTML -= cookiesPerClickDiv.innerHTML;
-            //}
+            if (Game.prefs.sUShowCookiesPerClick === 1) {
+                let cookiesPerClickDiv = document.createElement("div");
+                cookiesPerClickDiv.id = "cookiesPerClick";
+                cookiesPerClickDiv.style.fontSize = "50%";
+                cookiesPerClickDiv.innerHTML = `per click: ${Beautify(Game.mouseCps())}`;
 
-            while (Game.prefs.sUShowCookiesPerClick === 1) {
-                cookies.innerHTML += cookiesPerClickDiv.innerHTML;
+                cookies.appendChild(cookiesPerClickDiv);
+            } else if (Game.prefs.sUShowCookiesPerClick === 0) {
+                let cookiesPerClickDiv = document.getElementById("cookiesPerClick");
+                if (cookiesPerClickDiv) {
+                    cookiesPerClickDiv.remove();
+                }
             }
         },
 
