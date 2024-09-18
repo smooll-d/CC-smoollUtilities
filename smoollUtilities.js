@@ -92,6 +92,11 @@ if (smoollUtilities === undefined) {
             let cookies = document.getElementById("cookies");
 
             if (Game.prefs.sUShowCookiesPerClick === 1) {
+                let cPCD = document.getElementById("cookiesPerClick");
+                if (cPCD) {
+                    cPCD.remove();
+                }
+
                 let cookiesPerClickDiv = document.createElement("div");
                 cookiesPerClickDiv.id = "cookiesPerClick";
                 cookiesPerClickDiv.style.fontSize = "50%";
@@ -99,9 +104,9 @@ if (smoollUtilities === undefined) {
 
                 cookies.appendChild(cookiesPerClickDiv);
             } else if (Game.prefs.sUShowCookiesPerClick === 0) {
-                let cookiesPerClickDiv = document.getElementById("cookiesPerClick");
-                if (cookiesPerClickDiv) {
-                    cookiesPerClickDiv.remove();
+                let cPCD = document.getElementById("cookiesPerClick");
+                if (cPCD) {
+                    cPCD.remove();
                 }
             }
         },
