@@ -90,10 +90,14 @@ if (smoollUtilities === undefined) {
 
             let cookies = document.getElementById("cookies");
 
-            if (Game.prefs.sUShowCookiesPerClick === 1) {
+            //if (Game.prefs.sUShowCookiesPerClick === 1) {
+            //    cookies.innerHTML += cookiesPerClickDiv.innerHTML;
+            //} else if (Game.prefs.sUShowCookiesPerClick === 0) {
+            //    cookies.innerHTML -= cookiesPerClickDiv.innerHTML;
+            //}
+
+            while (Game.prefs.sUShowCookiesPerClick === 1) {
                 cookies.innerHTML += cookiesPerClickDiv.innerHTML;
-            } else if (Game.prefs.sUShowCookiesPerClick === 0) {
-                cookies.innerHTML -= cookiesPerClickDiv.innerHTML;
             }
         },
 
