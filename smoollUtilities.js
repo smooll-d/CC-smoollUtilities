@@ -93,7 +93,7 @@ if (smoollUtilities === undefined) {
             if (Game.prefs.sUShowCookiesPerClick === 1) {
                 cookies.innerHTML += cookiesPerClickDiv.innerHTML;
             } else if (Game.prefs.sUShowCookiesPerClick === 0) {
-                cookies.childNodes[1].remove(cookiesPerClickDiv);
+                cookies.innerHTML -= cookiesPerClickDiv.innerHTML;
             }
         },
 
