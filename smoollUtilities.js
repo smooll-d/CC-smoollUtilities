@@ -6,209 +6,224 @@
 var menu = document.getElementById("menu");
 
 if (smoollUtilities === undefined) {
-    var smoollUtilities = {
-        // Mod metadata
-        name: "smoollUtilities",
-        version: "1.0",
+	var smoollUtilities = {
+		// Mod metadata
+		name: "smoollUtilities",
+		version: "1.0",
 
-        // States
-        collapseMenu: {},
+		// States
+		collapseMenu: {},
 
-        // "collapseMenu" state names
-        cMPrefs: "prefs",
-        cMLog: "log",
+		// "collapseMenu" state names
+		cMPrefs: "prefs",
+		cMLog: "log",
 
-        // localStorage
-        localSUCollapseMenu: "sUCollapseMenu",
+		// localStorage
+		localSUCollapseMenu: "sUCollapseMenu",
 
-        // Functions required for this (and every other) mod to work
-        init: function() {
-            const CCUpdateMenu = Game.UpdateMenu;
+		// Functions required for this (and every other) mod to work
+		init: function () {
+			const CCUpdateMenu = Game.UpdateMenu;
 
-            Game.UpdateMenu = function() {
-                CCUpdateMenu();
+			Game.registerHook("logic", function () {
+				if (Game.prefs.sUShowCookiesPerClick === 1) {
+					smoollUtilities.toggleShowCookiesPerClick();
+				}
+			});
 
-                smoollUtilities.optionsMenu();
-                smoollUtilities.statsMenu();
-                smoollUtilities.infoMenu();
-            };
+			Game.UpdateMenu = function () {
+				CCUpdateMenu();
 
-            Game.registerHook("logic", function() {
-                if (Game.prefs.sUShowCookiesPerClick === 1) {
-                    smoollUtilities.toggleShowCookiesPerClick();
-                }
-            });
+				smoollUtilities.optionsMenu();
+				smoollUtilities.statsMenu();
+				smoollUtilities.infoMenu();
+			};
 
-            Game.Notify(this.name, "This \"smooll\" (get it? 'cause it's small) mod has been loaded!", [16, 5, "https://smooll-d.github.io/CC-smoollUtilities/icon.png"], 3);
-        },
+			Game.Notify(
+				this.name,
+				"This \"smooll\" (get it? 'cause it's small) mod has been loaded!",
+				[
+					16,
+					5,
+					"https://smooll-d.github.io/CC-smoollUtilities/icon.png",
+				],
+				3,
+			);
+		},
 
-        save: function() {
-            if (!this.collapseMenu) {
-                return
-            }
+		save: function () {
+			if (!this.collapseMenu) {
+				return;
+			}
 
-            let ncum = JSON.stringify(Game.prefs.sUNeverCollapseUpgradesMenu);
-            let collapseMenu = JSON.stringify(this.collapseMenu);
+			let ncum = JSON.stringify(Game.prefs.sUNeverCollapseUpgradesMenu);
+			let collapseMenu = JSON.stringify(this.collapseMenu);
 
-            window.localStorage.setItem(this.localSUCollapseMenu, collapseMenu);
+			window.localStorage.setItem(this.localSUCollapseMenu, collapseMenu);
 
-            return ncum;
-        },
+			return ncum;
+		},
 
-        load: function(str) {
-            Game.prefs.sUNeverCollapseUpgradesMenu = parseInt(str || 0);
-            Game.prefs.sUShowCookiesPerClick = parseInt(str || 0);
+		load: function (str) {
+			Game.prefs.sUNeverCollapseUpgradesMenu = parseInt(str || 0);
+			Game.prefs.sUShowCookiesPerClick = parseInt(str || 0);
 
-            const collapseMenuData = window.localStorage.getItem(this.localSUCollapseMenu);
-            if (collapseMenuData) {
-                this.collapseMenu = JSON.parse(collapseMenuData);
-            } else {
-                this.collapseMenu = {};
-            }
+			const collapseMenuData = window.localStorage.getItem(
+				this.localSUCollapseMenu,
+			);
+			if (collapseMenuData) {
+				this.collapseMenu = JSON.parse(collapseMenuData);
+			} else {
+				this.collapseMenu = {};
+			}
 
-            this.toggleNeverCollapseUpgradesMenu();
-        },
+			this.toggleNeverCollapseUpgradesMenu();
+		},
 
-        // Mod functions
-        toggleNeverCollapseUpgradesMenu: function() {
-            let upgrades = document.querySelector("#upgrades.storeSection.upgradeBox");
+		// Mod functions
+		toggleNeverCollapseUpgradesMenu: function () {
+			let upgrades = document.querySelector(
+				"#upgrades.storeSection.upgradeBox",
+			);
 
-            if (Game.prefs.sUNeverCollapseUpgradesMenu === 1) {
-                upgrades.style.height = "auto";
-            } else if (Game.prefs.sUNeverCollapseUpgradesMenu === 0) {
-                upgrades.removeAttribute("style");
-            }
-        },
+			if (Game.prefs.sUNeverCollapseUpgradesMenu === 1) {
+				upgrades.style.height = "auto";
+			} else if (Game.prefs.sUNeverCollapseUpgradesMenu === 0) {
+				upgrades.removeAttribute("style");
+			}
+		},
 
-        toggleCollapsibleButton: function(title) {
-            if (this.collapseMenu[title] === 0) {
-                this.collapseMenu[title]++;
-            } else if (this.collapseMenu[title] === 1) {
-                this.collapseMenu[title]--;
-            }
-        },
+		toggleCollapsibleButton: function (title) {
+			if (this.collapseMenu[title] === 0) {
+				this.collapseMenu[title]++;
+			} else if (this.collapseMenu[title] === 1) {
+				this.collapseMenu[title]--;
+			}
+		},
 
-        toggleShowCookiesPerClick: function() {
-            let cookies = document.getElementById("cookies");
+		toggleShowCookiesPerClick: function () {
+			let cookies = document.getElementById("cookies");
 
-            if (Game.prefs.sUShowCookiesPerClick === 1) {
-                let cPCD = document.getElementById("cookiesPerClick");
-                if (cPCD) {
-                    cPCD.remove();
-                }
+			if (Game.prefs.sUShowCookiesPerClick === 1) {
+				let cPCD = document.getElementById("cookiesPerClick");
+				if (cPCD) {
+					cPCD.remove();
+				}
 
-                let cookiesPerClickDiv = document.createElement("div");
-                cookiesPerClickDiv.id = "cookiesPerClick";
-                cookiesPerClickDiv.style.fontSize = "50%";
-                cookiesPerClickDiv.innerHTML = `per click: ${Beautify(Game.mouseCps())}`;
+				let cookiesPerClickDiv = document.createElement("div");
+				cookiesPerClickDiv.id = "cookiesPerClick";
+				cookiesPerClickDiv.style.fontSize = "50%";
+				cookiesPerClickDiv.innerHTML = `per click: ${Beautify(Game.mouseCps())}`;
 
-                cookies.appendChild(cookiesPerClickDiv);
-            } else if (Game.prefs.sUShowCookiesPerClick === 0) {
-                let cPCD = document.getElementById("cookiesPerClick");
-                if (cPCD) {
-                    cPCD.remove();
-                }
-            }
-        },
+				cookies.appendChild(cookiesPerClickDiv);
+			} else if (Game.prefs.sUShowCookiesPerClick === 0) {
+				let cPCD = document.getElementById("cookiesPerClick");
+				if (cPCD) {
+					cPCD.remove();
+				}
+			}
+		},
 
-        createCollapsibleButton: function(title) {
-            if (this.collapseMenu[title] === undefined) {
-                this.collapseMenu[title] = 0;
-            }
+		createCollapsibleButton: function (title) {
+			if (this.collapseMenu[title] === undefined) {
+				this.collapseMenu[title] = 0;
+			}
 
-            // Stolen wholesale from CCSE, which in turn stole it wholesale from Cookie Monster
-            let span = document.createElement("span");
-            span.style.cursor = "pointer";
-            span.style.display = "inline-block";
-            span.style.height = "14px";
-            span.style.width = "14px";
-            span.style.borderRadius = "7px";
-            span.style.textAlign = "center";
-            span.style.backgroundColor = "#C0C0C0";
-            span.style.color = "black";
-            span.style.fontSize = "13px";
-            span.style.verticalAlign = "middle";
-            span.textContent = this.collapseMenu[title] ? "+" : "-";
-            span.addEventListener("click", function() {
-                smoollUtilities.toggleCollapsibleButton(title);
-                Game.UpdateMenu();
-            });
+			// Stolen wholesale from CCSE, which in turn stole it wholesale from Cookie Monster
+			let span = document.createElement("span");
+			span.style.cursor = "pointer";
+			span.style.display = "inline-block";
+			span.style.height = "14px";
+			span.style.width = "14px";
+			span.style.borderRadius = "7px";
+			span.style.textAlign = "center";
+			span.style.backgroundColor = "#C0C0C0";
+			span.style.color = "black";
+			span.style.fontSize = "13px";
+			span.style.verticalAlign = "middle";
+			span.textContent = this.collapseMenu[title] ? "+" : "-";
+			span.addEventListener("click", function () {
+				smoollUtilities.toggleCollapsibleButton(title);
+				Game.UpdateMenu();
+			});
 
-            return span;
-        },
+			return span;
+		},
 
-        optionsMenu: function() {
-            if (Game.onMenu === "prefs") {
-                let span = this.createCollapsibleButton(this.cMPrefs);
+		optionsMenu: function () {
+			if (Game.onMenu === "prefs") {
+				let span = this.createCollapsibleButton(this.cMPrefs);
 
-                let titleDiv = document.createElement("div");
-                titleDiv.className = "title";
-                titleDiv.textContent = `${this.name} `;
-                titleDiv.appendChild(span);
+				let titleDiv = document.createElement("div");
+				titleDiv.className = "title";
+				titleDiv.textContent = `${this.name} `;
+				titleDiv.appendChild(span);
 
-                let neverCollapseUpgradesMenuDiv = document.createElement("div");
-                neverCollapseUpgradesMenuDiv.className = "listing";
-                neverCollapseUpgradesMenuDiv.innerHTML = `${Game.WritePrefButton("sUNeverCollapseUpgradesMenu", "sUncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.toggleNeverCollapseUpgradesMenu();")}
+				let neverCollapseUpgradesMenuDiv =
+					document.createElement("div");
+				neverCollapseUpgradesMenuDiv.className = "listing";
+				neverCollapseUpgradesMenuDiv.innerHTML = `${Game.WritePrefButton("sUNeverCollapseUpgradesMenu", "sUncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.toggleNeverCollapseUpgradesMenu();")}
                                                           <label>Keep upgrades menu as if it was always being hovered over</label>`;
 
-                let cookiesPerClickDiv = document.createElement("div");
-                cookiesPerClickDiv.className = "listing";
-                cookiesPerClickDiv.innerHTML = `${Game.WritePrefButton("sUShowCookiesPerClick", "sUcpsButton", "Show Cookies per Click", "Show Cookies per Click", "smoollUtilities.toggleShowCookiesPerClick();")}
+				let cookiesPerClickDiv = document.createElement("div");
+				cookiesPerClickDiv.className = "listing";
+				cookiesPerClickDiv.innerHTML = `${Game.WritePrefButton("sUShowCookiesPerClick", "sUcpsButton", "Show Cookies per Click (TESTING, DON'T USE)", "Show Cookies per Click (TESTING, DON'T USE)", "smoollUtilities.toggleShowCookiesPerClick();")}
                                                 <label>Show how many cookies are made per click</label>`;
 
-                let subsectionDiv = document.createElement("div");
-                subsectionDiv.className = "subsection";
-                subsectionDiv.style.padding = "0px";
-                subsectionDiv.appendChild(titleDiv);
-                if (!this.collapseMenu[this.cMPrefs]) {
-                    subsectionDiv.appendChild(neverCollapseUpgradesMenuDiv);
-                    //subsectionDiv.appendChild(cookiesPerClickDiv);
-                }
+				let subsectionDiv = document.createElement("div");
+				subsectionDiv.className = "subsection";
+				subsectionDiv.style.padding = "0px";
+				subsectionDiv.appendChild(titleDiv);
+				if (!this.collapseMenu[this.cMPrefs]) {
+					subsectionDiv.appendChild(neverCollapseUpgradesMenuDiv);
+					subsectionDiv.appendChild(cookiesPerClickDiv);
+				}
 
-                let optionsDiv = document.createElement("div");
-                optionsDiv.className = "block";
-                optionsDiv.style.padding = "0px";
-                optionsDiv.style.margin = "8px 4px";
-                optionsDiv.appendChild(subsectionDiv);
+				let optionsDiv = document.createElement("div");
+				optionsDiv.className = "block";
+				optionsDiv.style.padding = "0px";
+				optionsDiv.style.margin = "8px 4px";
+				optionsDiv.appendChild(subsectionDiv);
 
-                if (menu) {
-                    if (App) {
-                        menu.childNodes[4].after(optionsDiv);
-                    } else {
-                        menu.childNodes[3].after(optionsDiv);
-                    }
-                }
-            }
-        },
+				if (menu) {
+					if (App) {
+						menu.childNodes[4].after(optionsDiv);
+					} else {
+						menu.childNodes[3].after(optionsDiv);
+					}
+				}
+			}
+		},
 
-        statsMenu: function() {
-            if (Game.onMenu === "stats") {
-                let div = document.createElement("div");
-                div.className = "listing";
-                div.innerHTML = `<b>${this.name}:</b> ${this.version}`;
+		statsMenu: function () {
+			if (Game.onMenu === "stats") {
+				let div = document.createElement("div");
+				div.className = "listing";
+				div.innerHTML = `<b>${this.name}:</b> ${this.version}`;
 
-                if (menu) {
-                    let menuNode = document.getElementsByClassName("subsection")[0];
-                    menuNode.childNodes[3].after(div);
-                }
-            }
-        },
+				if (menu) {
+					let menuNode =
+						document.getElementsByClassName("subsection")[0];
+					menuNode.childNodes[3].after(div);
+				}
+			}
+		},
 
-        infoMenu: function() {
-            if (Game.onMenu === "log") {
-                let span = this.createCollapsibleButton(this.cMLog);
+		infoMenu: function () {
+			if (Game.onMenu === "log") {
+				let span = this.createCollapsibleButton(this.cMLog);
 
-                let titleDiv = document.createElement("div");
-                titleDiv.className = "title";
-                titleDiv.textContent = `${this.name} `;
-                titleDiv.appendChild(span);
+				let titleDiv = document.createElement("div");
+				titleDiv.className = "title";
+				titleDiv.textContent = `${this.name} `;
+				titleDiv.appendChild(span);
 
-                let subsectionDiv = document.createElement("div");
-                subsectionDiv.className = "subsection";
-                subsectionDiv.appendChild(titleDiv);
+				let subsectionDiv = document.createElement("div");
+				subsectionDiv.className = "subsection";
+				subsectionDiv.appendChild(titleDiv);
 
-                let updateLog = document.createElement("div");
-                updateLog.innerHTML += `<div class="subsection">
+				let updateLog = document.createElement("div");
+				updateLog.innerHTML += `<div class="subsection">
                                             <div class="listing">
                                                 smoollUtilities is a mod with lots (not quite right now) of QoL (Quality of Life) changes. All of which are toggleable and are not forced upon you.
                                             </div>
@@ -216,11 +231,11 @@ if (smoollUtilities === undefined) {
                                                 It supports both the web and Steam versions of Cookie Clicker.
                                             </div>
                                             <div class="listing">
-                                                smoollUtilities is written and maintained by 
+                                                smoollUtilities is written and maintained by
                                                 <a href="https://github.com/smooll-d" target="_blank">smooll</a>.
                                             </div>
                                             <div class="listing">
-                                                If you've encountered a bug, create an 
+                                                If you've encountered a bug, create an
                                                 <a href="https://github.com/smooll-d/CC-smoollUtilities/issues" target="_blank">issue</a>.
                                             </div>
                                             <div class="listing warning">
@@ -241,17 +256,18 @@ if (smoollUtilities === undefined) {
                                             </div>
                                         </div>`;
 
-                if (!this.collapseMenu[this.cMLog]) {
-                    subsectionDiv.appendChild(updateLog);
-                }
+				if (!this.collapseMenu[this.cMLog]) {
+					subsectionDiv.appendChild(updateLog);
+				}
 
-                if (menu) {
-                    let selectableDiv = menu.getElementsByClassName("selectable")[0];
-                    selectableDiv.childNodes[0].after(subsectionDiv);
-                }
-            }
-        }
-    };
+				if (menu) {
+					let selectableDiv =
+						menu.getElementsByClassName("selectable")[0];
+					selectableDiv.childNodes[0].after(subsectionDiv);
+				}
+			}
+		},
+	};
 }
 
 Game.registerMod(smoollUtilities.name, smoollUtilities);
