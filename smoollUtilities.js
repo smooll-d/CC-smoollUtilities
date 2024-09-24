@@ -148,7 +148,7 @@ if (smoollUtilities === undefined) {
 
                 let cookiesPerClickDiv = document.createElement("div");
                 cookiesPerClickDiv.className = "listing";
-                cookiesPerClickDiv.innerHTML = `${Game.WritePrefButton("sUShowCookiesPerClick", "sUcpsButton", "Show Cookies per Click (TESTING, DON'T USE)", "Show Cookies per Click (TESTING, DON'T USE)", "smoollUtilities.toggleShowCookiesPerClick();")}
+                cookiesPerClickDiv.innerHTML = `${Game.WritePrefButton("sUShowCookiesPerClick", "sUcpsButton", "Show Cookies per Click TESTING, DON'T USE", "Show Cookies per Click TESTING, DON'T USE", "smoollUtilities.toggleShowCookiesPerClick();")}
                                                 <label>Show how many cookies are made per click</label>`;
 
                 let subsectionDiv = document.createElement("div");
