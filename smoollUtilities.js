@@ -146,10 +146,10 @@ if (smoollUtilities === undefined) {
                 neverCollapseUpgradesMenuDiv.innerHTML = `${Game.WritePrefButton("sUNeverCollapseUpgradesMenu", "sUncumButton", "Never Collapse Upgrades Menu", "Never Collapse Upgrades Menu", "smoollUtilities.toggleNeverCollapseUpgradesMenu();")}
                                                           <label>Keep upgrades menu as if it was always being hovered over</label>`;
 
-                let cookiesPerClickDiv = document.createElement("div");
-                cookiesPerClickDiv.className = "listing";
-                cookiesPerClickDiv.innerHTML = `${Game.WritePrefButton("sUShowCookiesPerClick", "sUcpsButton", "Show Cookies per Click TESTING, DON'T USE", "Show Cookies per Click TESTING, DON'T USE", "smoollUtilities.toggleShowCookiesPerClick();")}
-                                                <label>Show how many cookies are made per click</label>`;
+                //let cookiesPerClickDiv = document.createElement("div");
+                //cookiesPerClickDiv.className = "listing";
+                //cookiesPerClickDiv.innerHTML = `${Game.WritePrefButton("sUShowCookiesPerClick", "sUcpsButton", "Show Cookies per Click TESTING, DON'T USE", "Show Cookies per Click TESTING, DON'T USE", "smoollUtilities.toggleShowCookiesPerClick();")}
+                //                                <label>Show how many cookies are made per click</label>`;
 
                 let subsectionDiv = document.createElement("div");
                 subsectionDiv.className = "subsection";
